@@ -1,5 +1,5 @@
 // A Score as its numeral plus a 0–100 scale with the baseline (70) marked. The numeral is the
-// accessible text; the scale is decoration. Unscored gets an empty hatched scale, never a zero.
+// accessible text; the scale is decoration. Unscored gets an empty dashed scale, never a zero.
 export function ScoreMeter({
   score,
   unscored,

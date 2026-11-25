@@ -19,7 +19,7 @@ Memorable moment: the Score Breakdown's pull toward 70: each External Rating dra
 
 THESIS: The Catalog is an exhibition catalogue of under fifty works. Each Game is a numbered plate with a wall label; the Score Breakdown is the catalogue's apparatus, set out so the reader can check the sum. Refuses the aggregator wall of coloured score tiles and the dark neon gamer UI.
 
-OWN-WORLD: Gallery-wall Prussian ink owns the masthead and section openers; label-stock white carries the reading column. Dark theme hangs the whole page on the wall. Archivo (wide, heavy) for plate numbers, wall-vinyl headings and Score numerals; Source Serif 4 for reading text. Score scale: five earthy steps from clay red to deep green, ink chosen per step for contrast. Unscored is a hatched, uncoloured plate. Hairline rules, tabular figures, no cards-in-cards.
+OWN-WORLD: Gallery-wall Prussian ink owns the masthead and section openers; label-stock white carries the reading column. Dark theme hangs the whole page on the wall. Archivo (wide, heavy) for plate numbers, wall-vinyl headings and Score numerals; Source Serif 4 for reading text. Score scale: five earthy steps from clay red to deep green, each dark enough to carry the numeral itself at AA. Unscored is a dashed, uncoloured absence mark (hatching was replaced after the detector flagged repeating stripes). Hairline rules, tabular figures, no cards-in-cards.
 
 STORY: The visitor sees a short ranked hang, recognises Games by cover, reads one big Score, opens a Game, watches each rating pulled toward 70, sees the adjusted values sum to the Score, and trusts it.
 

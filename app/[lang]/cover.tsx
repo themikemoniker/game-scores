@@ -1,6 +1,6 @@
 import type { dictionary } from "../../lib/i18n";
 
-// A Game's cover, or a hatched placeholder with the Game's initial when the Source has none.
+// A Game's cover, or a dashed placeholder frame with the Game's initial when the Source has none.
 export function Cover({
   url,
   name,

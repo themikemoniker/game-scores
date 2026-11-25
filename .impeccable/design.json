@@ -1,0 +1,963 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-25T00:00:00Z",
+  "title": "Design System: Game Scores",
+  "extensions": {
+    "colorMeta": {
+      "wall": {
+        "role": "primary",
+        "displayName": "Prussian Wall",
+        "canonical": "oklch(0.27 0.065 254)",
+        "tonalRamp": [
+          "oklch(0.15 0.010 254)",
+          "oklch(0.26 0.024 254)",
+          "oklch(0.38 0.040 254)",
+          "oklch(0.49 0.057 254)",
+          "oklch(0.61 0.057 254)",
+          "oklch(0.72 0.040 254)",
+          "oklch(0.84 0.024 254)",
+          "oklch(0.95 0.010 254)"
+        ]
+      },
+      "wall-deep": {
+        "role": "primary",
+        "displayName": "Wall Deep",
+        "canonical": "oklch(0.22 0.06 254)",
+        "tonalRamp": [
+          "oklch(0.15 0.009 254)",
+          "oklch(0.26 0.022 254)",
+          "oklch(0.38 0.037 254)",
+          "oklch(0.49 0.052 254)",
+          "oklch(0.61 0.052 254)",
+          "oklch(0.72 0.037 254)",
+          "oklch(0.84 0.022 254)",
+          "oklch(0.95 0.009 254)"
+        ]
+      },
+      "wall-ink": {
+        "role": "primary",
+        "displayName": "Wall Ink",
+        "canonical": "oklch(0.97 0.012 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.002 250)",
+          "oklch(0.26 0.004 250)",
+          "oklch(0.38 0.007 250)",
+          "oklch(0.49 0.010 250)",
+          "oklch(0.61 0.010 250)",
+          "oklch(0.72 0.007 250)",
+          "oklch(0.84 0.004 250)",
+          "oklch(0.95 0.002 250)"
+        ]
+      },
+      "wall-ink-soft": {
+        "role": "primary",
+        "displayName": "Wall Ink Soft",
+        "canonical": "oklch(0.83 0.035 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.005 250)",
+          "oklch(0.26 0.013 250)",
+          "oklch(0.38 0.022 250)",
+          "oklch(0.49 0.031 250)",
+          "oklch(0.61 0.031 250)",
+          "oklch(0.72 0.022 250)",
+          "oklch(0.84 0.013 250)",
+          "oklch(0.95 0.005 250)"
+        ]
+      },
+      "stock": {
+        "role": "neutral",
+        "displayName": "Label Stock",
+        "canonical": "oklch(0.986 0.003 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.000 250)",
+          "oklch(0.26 0.001 250)",
+          "oklch(0.38 0.002 250)",
+          "oklch(0.49 0.003 250)",
+          "oklch(0.61 0.003 250)",
+          "oklch(0.72 0.002 250)",
+          "oklch(0.84 0.001 250)",
+          "oklch(0.95 0.000 250)"
+        ]
+      },
+      "stock-sunk": {
+        "role": "neutral",
+        "displayName": "Sunk Stock",
+        "canonical": "oklch(0.955 0.009 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.001 250)",
+          "oklch(0.26 0.003 250)",
+          "oklch(0.38 0.006 250)",
+          "oklch(0.49 0.008 250)",
+          "oklch(0.61 0.008 250)",
+          "oklch(0.72 0.006 250)",
+          "oklch(0.84 0.003 250)",
+          "oklch(0.95 0.001 250)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(0.23 0.035 255)",
+        "tonalRamp": [
+          "oklch(0.15 0.005 255)",
+          "oklch(0.26 0.013 255)",
+          "oklch(0.38 0.022 255)",
+          "oklch(0.49 0.031 255)",
+          "oklch(0.61 0.031 255)",
+          "oklch(0.72 0.022 255)",
+          "oklch(0.84 0.013 255)",
+          "oklch(0.95 0.005 255)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Ink Soft",
+        "canonical": "oklch(0.44 0.035 255)",
+        "tonalRamp": [
+          "oklch(0.15 0.005 255)",
+          "oklch(0.26 0.013 255)",
+          "oklch(0.38 0.022 255)",
+          "oklch(0.49 0.031 255)",
+          "oklch(0.61 0.031 255)",
+          "oklch(0.72 0.022 255)",
+          "oklch(0.84 0.013 255)",
+          "oklch(0.95 0.005 255)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "oklch(0.87 0.012 255)",
+        "tonalRamp": [
+          "oklch(0.15 0.002 255)",
+          "oklch(0.26 0.004 255)",
+          "oklch(0.38 0.007 255)",
+          "oklch(0.49 0.010 255)",
+          "oklch(0.61 0.010 255)",
+          "oklch(0.72 0.007 255)",
+          "oklch(0.84 0.004 255)",
+          "oklch(0.95 0.002 255)"
+        ]
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Rule Strong",
+        "canonical": "oklch(0.62 0.03 255)",
+        "tonalRamp": [
+          "oklch(0.15 0.004 255)",
+          "oklch(0.26 0.011 255)",
+          "oklch(0.38 0.019 255)",
+          "oklch(0.49 0.026 255)",
+          "oklch(0.61 0.026 255)",
+          "oklch(0.72 0.019 255)",
+          "oklch(0.84 0.011 255)",
+          "oklch(0.95 0.004 255)"
+        ]
+      },
+      "link": {
+        "role": "secondary",
+        "displayName": "Link Blue",
+        "canonical": "oklch(0.42 0.13 256)",
+        "tonalRamp": [
+          "oklch(0.15 0.019 256)",
+          "oklch(0.26 0.047 256)",
+          "oklch(0.38 0.080 256)",
+          "oklch(0.49 0.113 256)",
+          "oklch(0.61 0.113 256)",
+          "oklch(0.72 0.080 256)",
+          "oklch(0.84 0.047 256)",
+          "oklch(0.95 0.019 256)"
+        ]
+      },
+      "pull": {
+        "role": "secondary",
+        "displayName": "Pull Blue",
+        "canonical": "oklch(0.45 0.15 256)",
+        "tonalRamp": [
+          "oklch(0.15 0.022 256)",
+          "oklch(0.26 0.055 256)",
+          "oklch(0.38 0.093 256)",
+          "oklch(0.49 0.131 256)",
+          "oklch(0.61 0.131 256)",
+          "oklch(0.72 0.093 256)",
+          "oklch(0.84 0.055 256)",
+          "oklch(0.95 0.022 256)"
+        ]
+      },
+      "focus": {
+        "role": "secondary",
+        "displayName": "Focus Blue",
+        "canonical": "oklch(0.55 0.19 256)",
+        "tonalRamp": [
+          "oklch(0.15 0.028 256)",
+          "oklch(0.26 0.069 256)",
+          "oklch(0.38 0.118 256)",
+          "oklch(0.49 0.166 256)",
+          "oklch(0.61 0.166 256)",
+          "oklch(0.72 0.118 256)",
+          "oklch(0.84 0.069 256)",
+          "oklch(0.95 0.028 256)"
+        ]
+      },
+      "s1": {
+        "role": "tertiary",
+        "displayName": "Score Clay (below 50)",
+        "canonical": "oklch(0.52 0.17 28)",
+        "tonalRamp": [
+          "oklch(0.15 0.026 28)",
+          "oklch(0.26 0.062 28)",
+          "oklch(0.38 0.105 28)",
+          "oklch(0.49 0.148 28)",
+          "oklch(0.61 0.148 28)",
+          "oklch(0.72 0.105 28)",
+          "oklch(0.84 0.062 28)",
+          "oklch(0.95 0.026 28)"
+        ]
+      },
+      "s2": {
+        "role": "tertiary",
+        "displayName": "Score Ochre (50-69)",
+        "canonical": "oklch(0.54 0.14 50)",
+        "tonalRamp": [
+          "oklch(0.15 0.021 50)",
+          "oklch(0.26 0.051 50)",
+          "oklch(0.38 0.087 50)",
+          "oklch(0.49 0.122 50)",
+          "oklch(0.61 0.122 50)",
+          "oklch(0.72 0.087 50)",
+          "oklch(0.84 0.051 50)",
+          "oklch(0.95 0.021 50)"
+        ]
+      },
+      "s3": {
+        "role": "tertiary",
+        "displayName": "Score Olive (70-79)",
+        "canonical": "oklch(0.53 0.105 108)",
+        "tonalRamp": [
+          "oklch(0.15 0.016 108)",
+          "oklch(0.26 0.038 108)",
+          "oklch(0.38 0.065 108)",
+          "oklch(0.49 0.092 108)",
+          "oklch(0.61 0.092 108)",
+          "oklch(0.72 0.065 108)",
+          "oklch(0.84 0.038 108)",
+          "oklch(0.95 0.016 108)"
+        ]
+      },
+      "s4": {
+        "role": "tertiary",
+        "displayName": "Score Leaf (80-89)",
+        "canonical": "oklch(0.52 0.13 140)",
+        "tonalRamp": [
+          "oklch(0.15 0.019 140)",
+          "oklch(0.26 0.047 140)",
+          "oklch(0.38 0.080 140)",
+          "oklch(0.49 0.113 140)",
+          "oklch(0.61 0.113 140)",
+          "oklch(0.72 0.080 140)",
+          "oklch(0.84 0.047 140)",
+          "oklch(0.95 0.019 140)"
+        ]
+      },
+      "s5": {
+        "role": "tertiary",
+        "displayName": "Score Deep Green (90+)",
+        "canonical": "oklch(0.47 0.12 160)",
+        "tonalRamp": [
+          "oklch(0.15 0.018 160)",
+          "oklch(0.26 0.044 160)",
+          "oklch(0.38 0.074 160)",
+          "oklch(0.49 0.105 160)",
+          "oklch(0.61 0.105 160)",
+          "oklch(0.72 0.074 160)",
+          "oklch(0.84 0.044 160)",
+          "oklch(0.95 0.018 160)"
+        ]
+      },
+      "danger": {
+        "role": "neutral",
+        "displayName": "Danger",
+        "canonical": "oklch(0.5 0.17 28)",
+        "tonalRamp": [
+          "oklch(0.15 0.026 28)",
+          "oklch(0.26 0.062 28)",
+          "oklch(0.38 0.105 28)",
+          "oklch(0.49 0.148 28)",
+          "oklch(0.61 0.148 28)",
+          "oklch(0.72 0.105 28)",
+          "oklch(0.84 0.062 28)",
+          "oklch(0.95 0.026 28)"
+        ]
+      },
+      "danger-tint": {
+        "role": "neutral",
+        "displayName": "Danger Tint",
+        "canonical": "oklch(0.96 0.02 28)",
+        "tonalRamp": [
+          "oklch(0.15 0.003 28)",
+          "oklch(0.26 0.007 28)",
+          "oklch(0.38 0.012 28)",
+          "oklch(0.49 0.017 28)",
+          "oklch(0.61 0.017 28)",
+          "oklch(0.72 0.012 28)",
+          "oklch(0.84 0.007 28)",
+          "oklch(0.95 0.003 28)"
+        ]
+      },
+      "caution": {
+        "role": "neutral",
+        "displayName": "Caution",
+        "canonical": "oklch(0.5 0.11 70)",
+        "tonalRamp": [
+          "oklch(0.15 0.017 70)",
+          "oklch(0.26 0.040 70)",
+          "oklch(0.38 0.068 70)",
+          "oklch(0.49 0.096 70)",
+          "oklch(0.61 0.096 70)",
+          "oklch(0.72 0.068 70)",
+          "oklch(0.84 0.040 70)",
+          "oklch(0.95 0.017 70)"
+        ]
+      },
+      "caution-tint": {
+        "role": "neutral",
+        "displayName": "Caution Tint",
+        "canonical": "oklch(0.965 0.03 85)",
+        "tonalRamp": [
+          "oklch(0.15 0.004 85)",
+          "oklch(0.26 0.011 85)",
+          "oklch(0.38 0.019 85)",
+          "oklch(0.49 0.026 85)",
+          "oklch(0.61 0.026 85)",
+          "oklch(0.72 0.019 85)",
+          "oklch(0.84 0.011 85)",
+          "oklch(0.95 0.004 85)"
+        ]
+      },
+      "success": {
+        "role": "neutral",
+        "displayName": "Success",
+        "canonical": "oklch(0.46 0.1 160)",
+        "tonalRamp": [
+          "oklch(0.15 0.015 160)",
+          "oklch(0.26 0.037 160)",
+          "oklch(0.38 0.062 160)",
+          "oklch(0.49 0.087 160)",
+          "oklch(0.61 0.087 160)",
+          "oklch(0.72 0.062 160)",
+          "oklch(0.84 0.037 160)",
+          "oklch(0.95 0.015 160)"
+        ]
+      },
+      "success-tint": {
+        "role": "neutral",
+        "displayName": "Success Tint",
+        "canonical": "oklch(0.96 0.025 160)",
+        "tonalRamp": [
+          "oklch(0.15 0.004 160)",
+          "oklch(0.26 0.009 160)",
+          "oklch(0.38 0.015 160)",
+          "oklch(0.49 0.022 160)",
+          "oklch(0.61 0.022 160)",
+          "oklch(0.72 0.015 160)",
+          "oklch(0.84 0.009 160)",
+          "oklch(0.95 0.004 160)"
+        ]
+      },
+      "wall-dark": {
+        "role": "primary",
+        "displayName": "Prussian Wall (dark)",
+        "canonical": "oklch(0.29 0.085 244)",
+        "tonalRamp": [
+          "oklch(0.15 0.013 244)",
+          "oklch(0.26 0.031 244)",
+          "oklch(0.38 0.053 244)",
+          "oklch(0.49 0.074 244)",
+          "oklch(0.61 0.074 244)",
+          "oklch(0.72 0.053 244)",
+          "oklch(0.84 0.031 244)",
+          "oklch(0.95 0.013 244)"
+        ]
+      },
+      "wall-deep-dark": {
+        "role": "primary",
+        "displayName": "Wall Deep (dark)",
+        "canonical": "oklch(0.25 0.08 244)",
+        "tonalRamp": [
+          "oklch(0.15 0.012 244)",
+          "oklch(0.26 0.029 244)",
+          "oklch(0.38 0.050 244)",
+          "oklch(0.49 0.070 244)",
+          "oklch(0.61 0.070 244)",
+          "oklch(0.72 0.050 244)",
+          "oklch(0.84 0.029 244)",
+          "oklch(0.95 0.012 244)"
+        ]
+      },
+      "wall-ink-dark": {
+        "role": "primary",
+        "displayName": "Wall Ink (dark)",
+        "canonical": "oklch(0.96 0.012 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.002 250)",
+          "oklch(0.26 0.004 250)",
+          "oklch(0.38 0.007 250)",
+          "oklch(0.49 0.010 250)",
+          "oklch(0.61 0.010 250)",
+          "oklch(0.72 0.007 250)",
+          "oklch(0.84 0.004 250)",
+          "oklch(0.95 0.002 250)"
+        ]
+      },
+      "wall-ink-soft-dark": {
+        "role": "primary",
+        "displayName": "Wall Ink Soft (dark)",
+        "canonical": "oklch(0.8 0.035 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.005 250)",
+          "oklch(0.26 0.013 250)",
+          "oklch(0.38 0.022 250)",
+          "oklch(0.49 0.031 250)",
+          "oklch(0.61 0.031 250)",
+          "oklch(0.72 0.022 250)",
+          "oklch(0.84 0.013 250)",
+          "oklch(0.95 0.005 250)"
+        ]
+      },
+      "stock-dark": {
+        "role": "neutral",
+        "displayName": "Label Stock (dark)",
+        "canonical": "oklch(0.2 0.06 244)",
+        "tonalRamp": [
+          "oklch(0.15 0.009 244)",
+          "oklch(0.26 0.022 244)",
+          "oklch(0.38 0.037 244)",
+          "oklch(0.49 0.052 244)",
+          "oklch(0.61 0.052 244)",
+          "oklch(0.72 0.037 244)",
+          "oklch(0.84 0.022 244)",
+          "oklch(0.95 0.009 244)"
+        ]
+      },
+      "stock-sunk-dark": {
+        "role": "neutral",
+        "displayName": "Sunk Stock (dark)",
+        "canonical": "oklch(0.235 0.068 244)",
+        "tonalRamp": [
+          "oklch(0.15 0.010 244)",
+          "oklch(0.26 0.025 244)",
+          "oklch(0.38 0.042 244)",
+          "oklch(0.49 0.059 244)",
+          "oklch(0.61 0.059 244)",
+          "oklch(0.72 0.042 244)",
+          "oklch(0.84 0.025 244)",
+          "oklch(0.95 0.010 244)"
+        ]
+      },
+      "ink-dark": {
+        "role": "neutral",
+        "displayName": "Ink (dark)",
+        "canonical": "oklch(0.95 0.012 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.002 250)",
+          "oklch(0.26 0.004 250)",
+          "oklch(0.38 0.007 250)",
+          "oklch(0.49 0.010 250)",
+          "oklch(0.61 0.010 250)",
+          "oklch(0.72 0.007 250)",
+          "oklch(0.84 0.004 250)",
+          "oklch(0.95 0.002 250)"
+        ]
+      },
+      "ink-soft-dark": {
+        "role": "neutral",
+        "displayName": "Ink Soft (dark)",
+        "canonical": "oklch(0.78 0.03 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.004 250)",
+          "oklch(0.26 0.011 250)",
+          "oklch(0.38 0.019 250)",
+          "oklch(0.49 0.026 250)",
+          "oklch(0.61 0.026 250)",
+          "oklch(0.72 0.019 250)",
+          "oklch(0.84 0.011 250)",
+          "oklch(0.95 0.004 250)"
+        ]
+      },
+      "rule-dark": {
+        "role": "neutral",
+        "displayName": "Rule (dark)",
+        "canonical": "oklch(0.34 0.065 244)",
+        "tonalRamp": [
+          "oklch(0.15 0.010 244)",
+          "oklch(0.26 0.024 244)",
+          "oklch(0.38 0.040 244)",
+          "oklch(0.49 0.057 244)",
+          "oklch(0.61 0.057 244)",
+          "oklch(0.72 0.040 244)",
+          "oklch(0.84 0.024 244)",
+          "oklch(0.95 0.010 244)"
+        ]
+      },
+      "rule-strong-dark": {
+        "role": "neutral",
+        "displayName": "Rule Strong (dark)",
+        "canonical": "oklch(0.56 0.06 244)",
+        "tonalRamp": [
+          "oklch(0.15 0.009 244)",
+          "oklch(0.26 0.022 244)",
+          "oklch(0.38 0.037 244)",
+          "oklch(0.49 0.052 244)",
+          "oklch(0.61 0.052 244)",
+          "oklch(0.72 0.037 244)",
+          "oklch(0.84 0.022 244)",
+          "oklch(0.95 0.009 244)"
+        ]
+      },
+      "link-dark": {
+        "role": "secondary",
+        "displayName": "Link Blue (dark)",
+        "canonical": "oklch(0.82 0.09 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.013 250)",
+          "oklch(0.26 0.033 250)",
+          "oklch(0.38 0.056 250)",
+          "oklch(0.49 0.079 250)",
+          "oklch(0.61 0.079 250)",
+          "oklch(0.72 0.056 250)",
+          "oklch(0.84 0.033 250)",
+          "oklch(0.95 0.013 250)"
+        ]
+      },
+      "pull-dark": {
+        "role": "secondary",
+        "displayName": "Pull Blue (dark)",
+        "canonical": "oklch(0.8 0.11 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.017 250)",
+          "oklch(0.26 0.040 250)",
+          "oklch(0.38 0.068 250)",
+          "oklch(0.49 0.096 250)",
+          "oklch(0.61 0.096 250)",
+          "oklch(0.72 0.068 250)",
+          "oklch(0.84 0.040 250)",
+          "oklch(0.95 0.017 250)"
+        ]
+      },
+      "focus-dark": {
+        "role": "secondary",
+        "displayName": "Focus Blue (dark)",
+        "canonical": "oklch(0.8 0.13 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.019 250)",
+          "oklch(0.26 0.047 250)",
+          "oklch(0.38 0.080 250)",
+          "oklch(0.49 0.113 250)",
+          "oklch(0.61 0.113 250)",
+          "oklch(0.72 0.080 250)",
+          "oklch(0.84 0.047 250)",
+          "oklch(0.95 0.019 250)"
+        ]
+      },
+      "s1-dark": {
+        "role": "tertiary",
+        "displayName": "Score Clay (below 50) (dark)",
+        "canonical": "oklch(0.7 0.16 28)",
+        "tonalRamp": [
+          "oklch(0.15 0.024 28)",
+          "oklch(0.26 0.058 28)",
+          "oklch(0.38 0.099 28)",
+          "oklch(0.49 0.140 28)",
+          "oklch(0.61 0.140 28)",
+          "oklch(0.72 0.099 28)",
+          "oklch(0.84 0.058 28)",
+          "oklch(0.95 0.024 28)"
+        ]
+      },
+      "s2-dark": {
+        "role": "tertiary",
+        "displayName": "Score Ochre (50-69) (dark)",
+        "canonical": "oklch(0.76 0.14 55)",
+        "tonalRamp": [
+          "oklch(0.15 0.021 55)",
+          "oklch(0.26 0.051 55)",
+          "oklch(0.38 0.087 55)",
+          "oklch(0.49 0.122 55)",
+          "oklch(0.61 0.122 55)",
+          "oklch(0.72 0.087 55)",
+          "oklch(0.84 0.051 55)",
+          "oklch(0.95 0.021 55)"
+        ]
+      },
+      "s3-dark": {
+        "role": "tertiary",
+        "displayName": "Score Olive (70-79) (dark)",
+        "canonical": "oklch(0.83 0.13 108)",
+        "tonalRamp": [
+          "oklch(0.15 0.019 108)",
+          "oklch(0.26 0.047 108)",
+          "oklch(0.38 0.080 108)",
+          "oklch(0.49 0.113 108)",
+          "oklch(0.61 0.113 108)",
+          "oklch(0.72 0.080 108)",
+          "oklch(0.84 0.047 108)",
+          "oklch(0.95 0.019 108)"
+        ]
+      },
+      "s4-dark": {
+        "role": "tertiary",
+        "displayName": "Score Leaf (80-89) (dark)",
+        "canonical": "oklch(0.79 0.15 138)",
+        "tonalRamp": [
+          "oklch(0.15 0.022 138)",
+          "oklch(0.26 0.055 138)",
+          "oklch(0.38 0.093 138)",
+          "oklch(0.49 0.131 138)",
+          "oklch(0.61 0.131 138)",
+          "oklch(0.72 0.093 138)",
+          "oklch(0.84 0.055 138)",
+          "oklch(0.95 0.022 138)"
+        ]
+      },
+      "s5-dark": {
+        "role": "tertiary",
+        "displayName": "Score Deep Green (90+) (dark)",
+        "canonical": "oklch(0.74 0.13 160)",
+        "tonalRamp": [
+          "oklch(0.15 0.019 160)",
+          "oklch(0.26 0.047 160)",
+          "oklch(0.38 0.080 160)",
+          "oklch(0.49 0.113 160)",
+          "oklch(0.61 0.113 160)",
+          "oklch(0.72 0.080 160)",
+          "oklch(0.84 0.047 160)",
+          "oklch(0.95 0.019 160)"
+        ]
+      },
+      "danger-dark": {
+        "role": "neutral",
+        "displayName": "Danger (dark)",
+        "canonical": "oklch(0.74 0.15 28)",
+        "tonalRamp": [
+          "oklch(0.15 0.022 28)",
+          "oklch(0.26 0.055 28)",
+          "oklch(0.38 0.093 28)",
+          "oklch(0.49 0.131 28)",
+          "oklch(0.61 0.131 28)",
+          "oklch(0.72 0.093 28)",
+          "oklch(0.84 0.055 28)",
+          "oklch(0.95 0.022 28)"
+        ]
+      },
+      "danger-tint-dark": {
+        "role": "neutral",
+        "displayName": "Danger Tint (dark)",
+        "canonical": "oklch(0.27 0.06 28)",
+        "tonalRamp": [
+          "oklch(0.15 0.009 28)",
+          "oklch(0.26 0.022 28)",
+          "oklch(0.38 0.037 28)",
+          "oklch(0.49 0.052 28)",
+          "oklch(0.61 0.052 28)",
+          "oklch(0.72 0.037 28)",
+          "oklch(0.84 0.022 28)",
+          "oklch(0.95 0.009 28)"
+        ]
+      },
+      "caution-dark": {
+        "role": "neutral",
+        "displayName": "Caution (dark)",
+        "canonical": "oklch(0.82 0.12 80)",
+        "tonalRamp": [
+          "oklch(0.15 0.018 80)",
+          "oklch(0.26 0.044 80)",
+          "oklch(0.38 0.074 80)",
+          "oklch(0.49 0.105 80)",
+          "oklch(0.61 0.105 80)",
+          "oklch(0.72 0.074 80)",
+          "oklch(0.84 0.044 80)",
+          "oklch(0.95 0.018 80)"
+        ]
+      },
+      "caution-tint-dark": {
+        "role": "neutral",
+        "displayName": "Caution Tint (dark)",
+        "canonical": "oklch(0.28 0.05 80)",
+        "tonalRamp": [
+          "oklch(0.15 0.007 80)",
+          "oklch(0.26 0.018 80)",
+          "oklch(0.38 0.031 80)",
+          "oklch(0.49 0.044 80)",
+          "oklch(0.61 0.044 80)",
+          "oklch(0.72 0.031 80)",
+          "oklch(0.84 0.018 80)",
+          "oklch(0.95 0.007 80)"
+        ]
+      },
+      "success-dark": {
+        "role": "neutral",
+        "displayName": "Success (dark)",
+        "canonical": "oklch(0.78 0.12 160)",
+        "tonalRamp": [
+          "oklch(0.15 0.018 160)",
+          "oklch(0.26 0.044 160)",
+          "oklch(0.38 0.074 160)",
+          "oklch(0.49 0.105 160)",
+          "oklch(0.61 0.105 160)",
+          "oklch(0.72 0.074 160)",
+          "oklch(0.84 0.044 160)",
+          "oklch(0.95 0.018 160)"
+        ]
+      },
+      "success-tint-dark": {
+        "role": "neutral",
+        "displayName": "Success Tint (dark)",
+        "canonical": "oklch(0.26 0.05 165)",
+        "tonalRamp": [
+          "oklch(0.15 0.007 165)",
+          "oklch(0.26 0.018 165)",
+          "oklch(0.38 0.031 165)",
+          "oklch(0.49 0.044 165)",
+          "oklch(0.61 0.044 165)",
+          "oklch(0.72 0.031 165)",
+          "oklch(0.84 0.018 165)",
+          "oklch(0.95 0.007 165)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Wordmark in the full masthead, ranking page only."
+      },
+      "score-numeral-lg": {
+        "displayName": "Score Numeral Lg",
+        "purpose": "The Score on the Game page, in its step colour."
+      },
+      "score-numeral": {
+        "displayName": "Score Numeral",
+        "purpose": "The Score on each ranked plate, in its step colour."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Game page and not-found h1."
+      },
+      "plate-numeral": {
+        "displayName": "Plate Numeral",
+        "purpose": "Counter-numbered rank on each plate, Ink Soft."
+      },
+      "section-title": {
+        "displayName": "Section Title",
+        "purpose": "Score Breakdown heading and admin h1."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Game names on ranked plates."
+      },
+      "dek": {
+        "displayName": "Dek",
+        "purpose": "Site description on the wall."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Wall labels, descriptions, prose; max 66ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Field labels, fact terms, table headers."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Year and Platforms, last synced, filter actions."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "The 70 tick label and pull-figure axis ends."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-hang",
+        "value": "0 1px 1px oklch(0.2 0.04 255 / 0.12), 0 8px 20px -8px oklch(0.2 0.04 255 / 0.35)",
+        "valueDark": "0 1px 1px oklch(0 0 0 / 0.3), 0 10px 24px -8px oklch(0 0 0 / 0.6)",
+        "purpose": "Every cover at rest."
+      },
+      {
+        "name": "shadow-lift",
+        "value": "0 2px 2px oklch(0.2 0.04 255 / 0.12), 0 16px 30px -10px oklch(0.2 0.04 255 / 0.4)",
+        "valueDark": "0 2px 2px oklch(0 0 0 / 0.3), 0 18px 34px -10px oklch(0 0 0 / 0.7)",
+        "purpose": "Cover on plate hover, with a 2px upward translate."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The only easing: state fades, cover lift, pull animation."
+      },
+      {
+        "name": "fast",
+        "value": "160ms",
+        "purpose": "Button colour fades and cover lift."
+      },
+      {
+        "name": "pull",
+        "value": "900ms ease-out 250ms delay",
+        "purpose": "Adjusted dot travels from raw to adjusted and the segment grows; only under prefers-reduced-motion: no-preference."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "masthead-stack",
+        "value": "30rem"
+      },
+      {
+        "name": "admin-table-blocks",
+        "value": "40rem"
+      },
+      {
+        "name": "narrow",
+        "value": "52rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Routine action: Filter, Search, Import, Sign in.",
+      "html": "<button class=\"ds-btn\">Filter</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 var(--space-5);font-family: var(--font-ui);font-size:var(--text-sm);font-weight:650;color:var(--wall-ink);background:var(--wall);border:1px solid var(--wall);border-radius:var(--radius-control);cursor:pointer;transition:background-color var(--fast) var(--ease-out),border-color var(--fast) var(--ease-out),color var(--fast) var(--ease-out);}.ds-btn:hover{background:var(--wall-deep);}.ds-btn:focus-visible{outline:2px solid var(--focus);outline-offset:3px;}@media (prefers-color-scheme: dark){.ds-btn{color:var(--wall);background:var(--wall-ink);border-color:var(--wall-ink);}.ds-btn:hover{background:var(--wall-ink-soft);}}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Row actions such as Sync and Import in admin tables.",
+      "html": "<button class=\"ds-btn-secondary\">Sync</button>",
+      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;min-height:2.25rem;padding:0 var(--space-4);font-family: var(--font-ui);font-size:var(--text-sm);font-weight:650;color:var(--ink);background:transparent;border:1px solid var(--rule-strong);border-radius:var(--radius-control);cursor:pointer;transition:background-color var(--fast) var(--ease-out),border-color var(--fast) var(--ease-out);}.ds-btn-secondary:hover{background:var(--stock-sunk);border-color:var(--ink-soft);}.ds-btn-secondary:focus-visible{outline:2px solid var(--focus);outline-offset:3px;}"
+    },
+    {
+      "name": "Danger Button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Remove a Game; destructive and visually distinct.",
+      "html": "<button class=\"ds-btn-danger\">Remove</button>",
+      "css": ".ds-btn-danger{display:inline-flex;align-items:center;min-height:2.25rem;padding:0 var(--space-4);font-family: var(--font-ui);font-size:var(--text-sm);font-weight:650;color:var(--danger);background:transparent;border:1px solid var(--danger);border-radius:var(--radius-control);cursor:pointer;transition:background-color var(--fast) var(--ease-out);}.ds-btn-danger:hover{background:var(--danger-tint);}.ds-btn-danger:focus-visible{outline:2px solid var(--focus);outline-offset:3px;}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Labelled field used in the filter bar and admin forms.",
+      "html": "<label class=\"ds-field\">Search<input class=\"ds-input\" type=\"search\"></label>",
+      "css": ".ds-field{display:flex;flex-direction:column;gap:var(--space-1);font-family: var(--font-ui);font-size:var(--text-sm);font-weight:600;color:var(--ink);}.ds-input{font:inherit;font-weight:400;font-size:var(--text-md);color:var(--ink);background:var(--stock);border:1px solid var(--rule-strong);border-radius:var(--radius-control);min-height:2.75rem;padding:0 var(--space-3);}.ds-input:hover{border-color:var(--ink-soft);}.ds-input:focus-visible{outline:2px solid var(--focus);outline-offset:1px;border-color:var(--focus);}"
+    },
+    {
+      "name": "Masthead with Switcher",
+      "kind": "nav",
+      "refersTo": "masthead",
+      "description": "Compact ink band with wordmark and locale switcher.",
+      "html": "<header class=\"ds-mast\"><a class=\"ds-word\" href=\"#\">Game Scores</a><nav class=\"ds-sw\"><strong>English</strong><a href=\"#\">Español</a></nav></header>",
+      "css": ".ds-mast{display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) var(--gutter);background:var(--wall);color:var(--wall-ink);border-bottom:1px solid var(--wall-deep);}.ds-word{font-family: var(--font-ui);font-weight:800;font-stretch:125%;font-size:var(--text-lg);letter-spacing:-0.02em;color:var(--wall-ink);text-decoration:none;}.ds-word:hover{text-decoration:underline;text-decoration-thickness:2px;}.ds-sw{display:flex;gap:var(--space-1);font-family: var(--font-ui);font-size:var(--text-sm);}.ds-sw a,.ds-sw strong{padding:var(--space-2) var(--space-3);border:1px solid transparent;border-radius:var(--radius-control);line-height:1.5;}.ds-sw a{color:var(--wall-ink-soft);text-decoration:none;}.ds-sw a:hover{color:var(--wall-ink);border-color:var(--wall-ink-soft);}.ds-sw strong{color:var(--wall-ink);font-weight:600;border-color:var(--wall-ink);}.ds-mast :focus-visible{outline:2px solid var(--wall-ink);outline-offset:3px;}"
+    },
+    {
+      "name": "Score Meter",
+      "kind": "custom",
+      "refersTo": "score-scale",
+      "description": "Score numeral in its step colour over a 0-100 scale ticked at 70.",
+      "html": "<div class=\"ds-meter\" style=\"--c:var(--s4);--score:83\"><span class=\"ds-val\">83</span><span class=\"ds-scale\"><span class=\"ds-fill\"></span></span></div>",
+      "css": ".ds-meter{display:flex;flex-direction:column;gap:var(--space-2);width:11rem;padding-bottom:1.1rem;}.ds-val{font-family: var(--font-ui);font-weight:800;font-stretch:112%;font-size:2.75rem;line-height:0.9;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;color:var(--c);}.ds-scale{position:relative;display:block;height:0.5rem;background:var(--stock-sunk);box-shadow:inset 0 0 0 1px var(--rule);}.ds-scale::after{content:'';position:absolute;left:70%;top:-0.25rem;bottom:-0.25rem;width:2px;margin-left:-1px;background:var(--ink);}.ds-scale::before{content:'70';position:absolute;left:70%;top:calc(100% + 0.3rem);transform:translateX(-50%);font-family: var(--font-ui);font-size:var(--text-xs);font-weight:700;line-height:1;color:var(--ink-soft);}.ds-fill{position:absolute;inset:0 auto 0 0;width:calc(var(--score) * 1%);background:var(--c);}"
+    },
+    {
+      "name": "Unscored Meter",
+      "kind": "custom",
+      "refersTo": "score-scale",
+      "description": "Absence, not zero: a word and a dashed empty scale.",
+      "html": "<div class=\"ds-un\"><span class=\"ds-un-val\">Unscored</span><span class=\"ds-un-scale\"></span></div>",
+      "css": ".ds-un{display:flex;flex-direction:column;gap:var(--space-2);width:11rem;}.ds-un-val{font-family: var(--font-ui);font-size:var(--text-lg);font-weight:700;line-height:1.2;color:var(--ink-soft);}.ds-un-scale{position:relative;display:block;height:0.5rem;border:1px dashed var(--rule-strong);}.ds-un-scale::after{content:'';position:absolute;left:70%;top:-0.25rem;bottom:-0.25rem;width:2px;margin-left:-1px;background:var(--rule-strong);}"
+    },
+    {
+      "name": "Ranked Plate",
+      "kind": "card",
+      "refersTo": "cover",
+      "description": "Numbered plate: rank, hung cover, title and wall label, Score; ruled, not boxed.",
+      "html": "<div class=\"ds-plate\"><span class=\"ds-rank\">1</span><div class=\"ds-cover\"></div><div><h2 class=\"ds-title\"><a href=\"#\">Test Both</a></h2><p class=\"ds-meta\">2020 · PC, PS5</p><p class=\"ds-label\">Test Studio · RPG</p></div></div>",
+      "css": ".ds-plate{display:grid;grid-template-columns:5rem 6rem minmax(0,1fr);align-items:center;gap:var(--space-6);padding:var(--space-6) 0;border-bottom:1px solid var(--rule);}.ds-rank{align-self:start;font-family: var(--font-ui);font-weight:800;font-stretch:125%;font-size:var(--text-2xl);line-height:1;font-variant-numeric:tabular-nums;color:var(--ink-soft);}.ds-cover{aspect-ratio:264/374;border-radius:var(--radius-cover);background:var(--stock-sunk);box-shadow:var(--shadow-hang);transition:transform var(--fast) var(--ease-out),box-shadow var(--fast) var(--ease-out);}.ds-plate:hover .ds-cover{transform:translateY(-2px);box-shadow:var(--shadow-lift);}.ds-title{margin:0;font-family: var(--font-ui);font-size:var(--text-xl);font-weight:700;letter-spacing:-0.01em;line-height:1.25;}.ds-title a{color:var(--ink);text-decoration:none;}.ds-plate:hover .ds-title a{text-decoration:underline;text-decoration-thickness:2px;}.ds-meta{margin:var(--space-1) 0 0;font-family: var(--font-ui);font-size:var(--text-sm);color:var(--ink-soft);}.ds-label{margin:var(--space-3) 0 0;font-family:var(--font-read);color:var(--ink);}"
+    },
+    {
+      "name": "Status Message",
+      "kind": "custom",
+      "refersTo": "message-success",
+      "description": "Admin status; the state is printed as a word, not only tinted.",
+      "html": "<p class=\"ds-msg\">Imported Test Both.</p>",
+      "css": ".ds-msg{padding:var(--space-3) var(--space-4);border:1px solid var(--success);background:var(--success-tint);border-radius:var(--radius-control);font-family: var(--font-ui);font-size:var(--text-sm);color:var(--ink);max-width:var(--measure);}.ds-msg::before{content:'Done';display:block;font-weight:700;margin-bottom:var(--space-1);color:var(--success);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Exhibition Catalogue",
+    "overview": "The Catalog is hung like a small exhibition: a Prussian-ink wall frames each page, and the reading happens on pale label stock below it. Each Game is a numbered plate with a wall label beside its cover, and the Score Breakdown is the catalogue's scholarly apparatus, ruled like a ledger so a reader can check the sum. The site's one job is to make a single number trustworthy, so the system spends its expression on the plate numeral, the Score numeral and the pull toward 70, and stays plain everywhere else.\n\nDensity is low and deliberate: one plate per row, generous vertical rhythm (2rem between plate rules), hairline dividers instead of boxes. Two faces split the work cleanly: Archivo, wide and heavy, is the wall vinyl (wordmark, plate numbers, headings, Score numerals, every control and label); Source Serif 4 is the printed label text and prose. In dark mode the whole page hangs on the wall: the reading ground becomes a deep Prussian, not a neutral grey.\n\nThe admin (`/admin`) is an Operate surface in the same world: same tokens and masthead colour, but Archivo carries all of its text and the expressive scale is turned down to a compact h1 and ruled sections.",
+    "keyCharacteristics": [
+      "Prussian-ink wall plus label-stock reading ground; every non-Score hue sits in the wall's blue family (hue 244–256).",
+      "A five-step Score scale from clay to deep green, always printed as a number beside its colour.",
+      "Archivo with its width axis (112–125%) for anything that names or counts; Source Serif 4 for anything that is read.",
+      "Hairline rules, tabular figures, no nested containers.",
+      "Unscored is shown as absence (a dash and a dashed empty scale), never as zero."
+    ],
+    "rules": [
+      {
+        "name": "The One Wall Rule",
+        "body": "Outside the Score scale and the admin states, every colour is a lightness or chroma step of the wall's blue (hue 244–256). A new surface adds no new hue.",
+        "section": "colors"
+      },
+      {
+        "name": "The Printed Number Rule",
+        "body": "Colour is never the only signal. Every Score colour sits beside the printed numeral; every message state prints its word (\"Done\", \"Problem\", \"Check\") before the text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Absence Rule",
+        "body": "Unscored has no colour: an Ink Soft word, a dashed Rule Strong scale with no fill, and a dash where a plate number would be. Never a zero, never a grey bar.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Archivo for anything that names, counts or controls; Source Serif 4 for anything that is read as a sentence. The admin is the exception that proves it: it is all controls, so it is all Archivo.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Every numeral that can line up with another (plate numbers, Scores, ratings, counts, dates in meta) uses tabular figures.",
+        "section": "typography"
+      },
+      {
+        "name": "The Never Shrink Rule",
+        "body": "Narrow screens drop columns and decoration, never the reading size: body stays at 1.0625rem; only display-scale numerals and titles step down.",
+        "section": "typography"
+      },
+      {
+        "name": "The Only The Works Hang Rule",
+        "body": "Shadows are for covers. Placeholder covers, which are not works, drop the shadow and take a dashed outline.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** take every colour from the tokens in `app/globals.css`, and give each new role a light and a dark value.",
+      "**Do** print the number next to any Score colour, and print the state word next to any status colour.",
+      "**Do** use Archivo with its width axis for names, numerals and controls, and Source Serif 4 for sentences.",
+      "**Do** separate plates, rows and sections with rules (1px hairline, 2px Ink, 3px double for a sum) rather than boxes.",
+      "**Do** show absence with a dashed Rule Strong outline and an honest word: Unscored, no cover, no results.",
+      "**Do** keep reading text at 1.0625rem on every screen width; drop columns instead.",
+      "**Do** keep motion to the 160ms ease-out state fades, the cover lift, and the pull animation, all off under reduced motion."
+    ],
+    "donts": [
+      "**Don't** add a hue outside the wall's blue family, the Score scale and the admin states.",
+      "**Don't** fill a tile or card with a Score colour; the colour lives in the numeral and the meter fill.",
+      "**Don't** show an Unscored Game as 0 or with a grey bar.",
+      "**Don't** put shadows on anything but covers, and don't nest bordered containers inside one another.",
+      "**Don't** shrink body text on narrow screens.",
+      "**Don't** substitute a stock or generated image for a missing cover."
+    ]
+  }
+}
