@@ -59,3 +59,27 @@ export async function deleteGameRow(igdbId: number): Promise<void> {
     },
   });
 }
+
+// Replaces the rows for the given IGDB IDs (rows in COLUMNS order), all in one batch request.
+// Each ID replaces the first row that has it; IDs with no row are skipped.
+// ponytail: row numbers come from a read just before the write, so a row inserted or deleted by
+// hand in between could shift them. Fine for one owner; lock or re-check if that ever bites.
+export async function replaceGameRows(rows: Map<number, string[]>): Promise<void> {
+  const ids = await client().request<{ values?: string[][] }>({ url: `${base()}/values/Games!A:A` });
+  const data: { range: string; values: string[][] }[] = [];
+  const seen = new Set<string>();
+  (ids.data.values ?? []).forEach((r, i) => {
+    const id = r[0]?.trim();
+    const row = rows.get(Number(id));
+    // Index 0 is the header row; Sheet row numbers start at 1.
+    if (i === 0 || !row || seen.has(id)) return;
+    seen.add(id);
+    data.push({ range: `Games!A${i + 1}:N${i + 1}`, values: [row] });
+  });
+  if (data.length === 0) return;
+  await client().request({
+    url: `${base()}/values:batchUpdate`,
+    method: "POST",
+    data: { valueInputOption: "RAW", data },
+  });
+}

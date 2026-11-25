@@ -3,15 +3,27 @@ import Link from "next/link";
 import { isAdmin } from "../../lib/admin-auth";
 import { getCatalog } from "../../lib/catalog-cache";
 import { searchGames, type Candidate } from "../../lib/igdb";
-import { importGame, login, logout, removeGame } from "./actions";
+import { importGame, login, logout, removeGame, syncGames } from "./actions";
 
 // English only, no locale prefix (spec: i18n).
 export const metadata: Metadata = { title: "Admin · Game Scores", robots: { index: false } };
 
-type Params = { error?: string; q?: string; slugFor?: string; slug?: string; importError?: string; imported?: string };
+const utc = (iso: string) =>
+  new Date(iso).toLocaleString("en", { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" });
+
+type Params = {
+  error?: string;
+  q?: string;
+  slugFor?: string;
+  slug?: string;
+  importError?: string;
+  imported?: string;
+  synced?: string;
+  missing?: string;
+};
 
 export default async function AdminPage({ searchParams }: { searchParams: Promise<Params> }) {
-  const { error, q = "", slugFor, slug, importError, imported } = await searchParams;
+  const { error, q = "", slugFor, slug, importError, imported, synced, missing } = await searchParams;
   if (!(await isAdmin())) {
     return (
       <main className="admin">
@@ -127,6 +139,30 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
       )}
 
       <h2>Catalog ({games.length})</h2>
+      {synced && (
+        <p role="status">
+          Synced {synced} {synced === "1" ? "Game" : "Games"}.
+        </p>
+      )}
+      {missing && (
+        <p role="alert">
+          IGDB no longer returns these Games, so their rows were left unchanged:{" "}
+          {missing
+            .split(",")
+            .map((id) => {
+              const name = games.find((g) => String(g.igdbId) === id)?.name;
+              return name ? `${name} (IGDB ID ${id})` : `IGDB ID ${id}`;
+            })
+            .join(", ")}
+          . Remove any you no longer want.
+        </p>
+      )}
+      {games.length + invalidRows.length > 0 && (
+        <form action={syncGames}>
+          <button type="submit">Sync all</button> Overwrites every Game&apos;s IGDB data, including hand edits in the
+          Sheet. Slugs are kept.
+        </form>
+      )}
       {games.length === 0 ? (
         <p>The Catalog is empty.</p>
       ) : (
@@ -136,6 +172,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
               <th>Game</th>
               <th>IGDB ID</th>
               <th>Score</th>
+              <th>Last synced</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -147,7 +184,14 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
                 </td>
                 <td>{game.igdbId}</td>
                 <td>{game.score === null ? "Unscored" : Math.round(game.score)}</td>
-                <td>
+                <td>{game.lastSynced ? `${utc(game.lastSynced)} UTC` : "Never"}</td>
+                <td className="actions">
+                  <form action={syncGames}>
+                    <input type="hidden" name="igdbId" value={game.igdbId} />
+                    <button type="submit" aria-label={`Sync ${game.name}`}>
+                      Sync
+                    </button>
+                  </form>
                   <form action={removeGame}>
                     <input type="hidden" name="igdbId" value={game.igdbId} />
                     <button type="submit" aria-label={`Remove ${game.name}`}>
