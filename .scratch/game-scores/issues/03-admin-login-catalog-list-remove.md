@@ -6,11 +6,11 @@ See `.scratch/game-scores/spec.md`: user stories 26–29, 41, 45–46, and Admin
 
 **Blocked by:** 01
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] The login form compares the submitted password with `ADMIN_PASSWORD` and, on a match, sets a signed, httpOnly cookie that lasts 30 days. Logout clears it.
-- [ ] Every admin server action checks the cookie itself; protecting the page alone isn't enough.
-- [ ] The admin page lists the Games in the Catalog and the invalid rows, each with its row number and reason.
-- [ ] Remove deletes the row by IGDB ID through the Sheet storage module and revalidates the catalog cache tag.
-- [ ] A removed Game disappears from the public ranking and its page returns a 404.
-- [ ] The admin page has no locale prefix and is in English only.
+- [x] The login form compares the submitted password with `ADMIN_PASSWORD` and, on a match, sets a signed, httpOnly cookie that lasts 30 days. Logout clears it.
+- [x] Every admin server action checks the cookie itself; protecting the page alone isn't enough.
+- [x] The admin page lists the Games in the Catalog and the invalid rows, each with its row number and reason.
+- [x] Remove deletes the row by IGDB ID through the Sheet storage module and revalidates the catalog cache tag.
+- [x] A removed Game disappears from the public ranking and its page returns a 404.
+- [x] The admin page has no locale prefix and is in English only.

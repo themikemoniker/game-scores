@@ -64,12 +64,15 @@ body {
   margin: 0;
 }
 
-.game table {
+.game table,
+.admin table {
   border-collapse: collapse;
 }
 
 .game th,
-.game td {
+.game td,
+.admin th,
+.admin td {
   padding: 0.25rem 0.75rem;
   text-align: left;
   border-bottom: 1px solid #ddd;

@@ -19,9 +19,33 @@ const client = () =>
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   }));
 
+const base = () => `https://sheets.googleapis.com/v4/spreadsheets/${env("GOOGLE_SHEET_ID")}`;
+
 // All data rows of the `Games` tab (the header row is skipped), in one call.
 export async function readGameRows(): Promise<string[][]> {
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${env("GOOGLE_SHEET_ID")}/values/Games!A2:N`;
-  const res = await client().request<{ values?: string[][] }>({ url });
+  const res = await client().request<{ values?: string[][] }>({ url: `${base()}/values/Games!A2:N` });
   return res.data.values ?? [];
+}
+
+// Deletes the first row of the `Games` tab whose IGDB ID matches. No match (already gone) is a no-op.
+export async function deleteGameRow(igdbId: number): Promise<void> {
+  const [ids, meta] = await Promise.all([
+    client().request<{ values?: string[][] }>({ url: `${base()}/values/Games!A:A` }),
+    client().request<{ sheets: { properties: { sheetId: number; title: string } }[] }>({
+      url: `${base()}?fields=sheets.properties(sheetId,title)`,
+    }),
+  ]);
+  // Index 0 is the header row.
+  const index = (ids.data.values ?? []).findIndex((r, i) => i > 0 && r[0]?.trim() === String(igdbId));
+  if (index === -1) return;
+  const sheetId = meta.data.sheets.find((s) => s.properties.title === "Games")!.properties.sheetId;
+  await client().request({
+    url: `${base()}:batchUpdate`,
+    method: "POST",
+    data: {
+      requests: [
+        { deleteDimension: { range: { sheetId, dimension: "ROWS", startIndex: index, endIndex: index + 1 } } },
+      ],
+    },
+  });
 }

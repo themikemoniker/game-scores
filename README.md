@@ -28,6 +28,7 @@ Put these in `.env.local` locally and in the Vercel project settings for deploys
 | `GOOGLE_SERVICE_ACCOUNT_EMAIL` | The service account's email. Share the Sheet with it as an editor. |
 | `GOOGLE_PRIVATE_KEY` | The service account's private key, on one line with newlines escaped as `\n`. |
 | `GOOGLE_SHEET_ID` | The ID from the Sheet's URL: `docs.google.com/spreadsheets/d/<ID>/edit`. |
+| `ADMIN_PASSWORD` | The password for `/admin`. It also signs the 30-day session cookie, so changing it logs everyone out. |
 
 ## The Sheet
 
@@ -52,4 +53,4 @@ The site reads the Sheet at most every 10 minutes (cache tag `catalog`), so hand
 
 ## Deploy
 
-Import the repo in Vercel (framework preset: Next.js), add the three environment variables, deploy.
+Import the repo in Vercel (framework preset: Next.js), add the four environment variables, deploy. The admin page is at `/admin`.
