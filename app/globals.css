@@ -1379,6 +1379,7 @@ select:focus-visible {
     row-gap: var(--space-3);
     column-gap: var(--space-4);
     align-items: start;
+    padding: var(--space-5) 0;
   }
 
   .ranking li::before {
@@ -1548,6 +1549,7 @@ select:focus-visible {
   .masthead-inner {
     flex-direction: column-reverse;
     padding-top: var(--space-4);
+    padding-bottom: var(--space-6);
   }
 
   .masthead.compact .masthead-inner {
