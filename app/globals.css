@@ -1273,9 +1273,16 @@ select:focus-visible {
 }
 
 .data-table td.actions {
-  display: flex;
-  gap: var(--space-2);
+  white-space: nowrap;
   padding-inline-end: 0;
+}
+
+.data-table td.actions form {
+  display: inline-block;
+}
+
+.data-table td.actions form + form {
+  margin-inline-start: var(--space-2);
 }
 
 .row-form {
@@ -1583,8 +1590,13 @@ select:focus-visible {
 
   .data-table td.actions {
     display: flex;
+    gap: var(--space-2);
     grid-column: 1 / -1;
     margin-top: var(--space-2);
+  }
+
+  .data-table td.actions form + form {
+    margin-inline-start: 0;
   }
 
   .row-form {
