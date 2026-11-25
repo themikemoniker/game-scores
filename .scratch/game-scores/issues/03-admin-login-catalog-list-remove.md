@@ -14,3 +14,8 @@ See `.scratch/game-scores/spec.md`: user stories 26–29, 41, 45–46, and Admin
 - [x] Remove deletes the row by IGDB ID through the Sheet storage module and revalidates the catalog cache tag.
 - [x] A removed Game disappears from the public ranking and its page returns a 404.
 - [x] The admin page has no locale prefix and is in English only.
+
+## Comments
+
+- Checked by hand on 2026-11-25 with `next start`: a wrong password shows "Wrong password."; the right one opens the admin page with the Catalog and "Invalid rows (0)"; Remove on an imported Game drops it from the admin list, and at once from the `/en` ranking, with `/en/games/<slug>` returning 404; Log out returns to the login form. The cookie is httpOnly, 30 days, `path=/admin`, and `secure` in production (see `lib/admin-auth.ts`). The invalid-row list wasn't exercised with a bad row (the Sheet has none). The Vitest tests cover the reasons.
+
