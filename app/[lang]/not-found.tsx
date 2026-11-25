@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { lang as rootLang } from "next/root-params";
 import { dictionary, hasLocale } from "../../lib/i18n";
-import { Masthead } from "./masthead";
+import { BackArrow, Masthead } from "./masthead";
 
 export default async function NotFound() {
   const param = await rootLang();
@@ -15,6 +15,7 @@ export default async function NotFound() {
         <p>{t.notFoundExplain}</p>
         <p>
           <Link href={`/${lang}`} className="button">
+            <BackArrow />
             {t.backToRanking}
           </Link>
         </p>

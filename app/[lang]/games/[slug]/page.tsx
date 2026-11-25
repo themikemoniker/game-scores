@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getCatalog } from "../../../../lib/catalog-cache";
 import { dictionary, genreName, hasLocale } from "../../../../lib/i18n";
 import { Cover } from "../../cover";
-import { Masthead } from "../../masthead";
+import { BackArrow, Masthead } from "../../masthead";
 import { ScoreMeter, scoreStep } from "../../score-meter";
 
 export const revalidate = 600;
@@ -39,7 +39,10 @@ export default async function GamePage({ params }: { params: Promise<{ lang: str
       <Masthead lang={lang} rest={`/games/${slug}`} />
       <main className="page game">
         <p className="back">
-          <Link href={`/${lang}`}>{t.backToRanking}</Link>
+          <Link href={`/${lang}`}>
+            <BackArrow />
+            {t.backToRanking}
+          </Link>
         </p>
         <article className="game-hero">
           <h1 className={game.name.length > 40 ? "long" : undefined}>{game.name}</h1>

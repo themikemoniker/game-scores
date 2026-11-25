@@ -75,16 +75,16 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --wall: oklch(0.13 0.03 254);
-    --wall-deep: oklch(0.1 0.025 254);
+    --wall: oklch(0.29 0.085 244);
+    --wall-deep: oklch(0.25 0.08 244);
     --wall-ink: oklch(0.96 0.012 250);
     --wall-ink-soft: oklch(0.8 0.035 250);
-    --stock: oklch(0.23 0.045 254);
-    --stock-sunk: oklch(0.27 0.05 254);
+    --stock: oklch(0.2 0.06 244);
+    --stock-sunk: oklch(0.235 0.068 244);
     --ink: oklch(0.95 0.012 250);
     --ink-soft: oklch(0.78 0.03 250);
-    --rule: oklch(0.36 0.045 254);
-    --rule-strong: oklch(0.55 0.045 254);
+    --rule: oklch(0.34 0.065 244);
+    --rule-strong: oklch(0.56 0.06 244);
     --link: oklch(0.82 0.09 250);
     --pull: oklch(0.8 0.11 250);
     --focus: oklch(0.8 0.13 250);
@@ -473,11 +473,11 @@ select:focus-visible {
 .ranking li {
   position: relative;
   display: grid;
-  grid-template-columns: 4.5rem 6rem minmax(0, 1fr) 11rem;
+  grid-template-columns: 5rem 11rem minmax(0, 1fr) 11rem;
   grid-template-areas: "rank cover label score";
   align-items: center;
-  gap: var(--space-5);
-  padding: var(--space-5) 0;
+  gap: var(--space-6);
+  padding: var(--space-6) 0;
   border-bottom: 1px solid var(--rule);
   counter-increment: plate;
 }
@@ -487,12 +487,12 @@ select:focus-visible {
   content: counter(plate);
   align-self: start;
   font-family: var(--font-ui);
-  font-weight: 300;
+  font-weight: 800;
   font-stretch: 125%;
   font-size: var(--text-2xl);
   line-height: 1;
   font-variant-numeric: tabular-nums;
-  color: var(--ink);
+  color: var(--ink-soft);
 }
 
 /* Unscored Games have no place in the ranking, so they get no plate number. */
@@ -508,9 +508,11 @@ select:focus-visible {
   border-top: 2px solid var(--rule-strong);
 }
 
+/* Covers hang at two-thirds of the Source's 264px: large enough to read as works, small enough
+   that two plates still share a desktop viewport and the list keeps reading as a ranking. */
 .ranking .cover {
   grid-area: cover;
-  width: 6rem;
+  width: 11rem;
 }
 
 .ranking .label {
@@ -519,7 +521,7 @@ select:focus-visible {
 }
 
 .ranking h2 {
-  font-size: var(--text-lg);
+  font-size: var(--text-xl);
   font-weight: 700;
   font-stretch: 100%;
   letter-spacing: -0.01em;
@@ -550,6 +552,12 @@ select:focus-visible {
 .ranking li:has(h2 a:focus-visible) {
   outline: 2px solid var(--focus);
   outline-offset: 4px;
+}
+
+.wall-label {
+  margin-top: var(--space-3);
+  max-width: 46ch;
+  color: var(--ink);
 }
 
 .meta {
@@ -732,8 +740,14 @@ select:focus-visible {
 }
 
 .back a {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   padding-block: var(--space-2);
+}
+
+.back-arrow {
+  flex-shrink: 0;
 }
 
 .game-hero {
@@ -1047,7 +1061,7 @@ select:focus-visible {
 .pull-figure .raw {
   left: calc(var(--raw) * 1%);
   border: 2px solid var(--ink);
-  background: var(--stock-sunk);
+  z-index: 1;
 }
 
 .pull-figure .adj {
@@ -1210,6 +1224,28 @@ select:focus-visible {
   max-width: var(--measure);
 }
 
+/* State is printed, not only tinted. */
+.message::before {
+  display: block;
+  font-weight: 700;
+  margin-bottom: var(--space-1);
+}
+
+.message.success::before {
+  content: "Done";
+  color: var(--success);
+}
+
+.message.error::before {
+  content: "Problem";
+  color: var(--danger);
+}
+
+.message.warning::before {
+  content: "Check";
+  color: var(--caution);
+}
+
 .message.success {
   border-color: var(--success);
   background: var(--success-tint);
@@ -1347,6 +1383,14 @@ select:focus-visible {
 
   .ranking li::before {
     font-size: var(--text-xl);
+  }
+
+  .ranking h2 {
+    font-size: var(--text-lg);
+  }
+
+  .wall-label {
+    font-size: var(--text-sm);
   }
 
   .ranking .cover {

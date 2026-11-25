@@ -44,7 +44,7 @@ const en = {
   cover: (name: string) => `${name} cover`,
   noCover: (name: string) => `${name}: no cover`,
   // Game page
-  backToRanking: "← Ranking",
+  backToRanking: "Ranking",
   released: "Released",
   platforms: "Platforms",
   genres: "Genres",
@@ -93,7 +93,7 @@ const es: Dictionary = {
   unscored: "Sin puntuación",
   cover: (name) => `Portada de ${name}`,
   noCover: (name) => `${name}: sin portada`,
-  backToRanking: "← Clasificación",
+  backToRanking: "Clasificación",
   released: "Lanzamiento",
   platforms: "Plataformas",
   genres: "Géneros",

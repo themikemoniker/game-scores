@@ -94,6 +94,13 @@ export default async function Home({
                   {game.releaseDate?.slice(0, 4) ?? t.releaseUnknown}
                   {game.platforms.length > 0 && ` · ${game.platforms.join(", ")}`}
                 </p>
+                {(game.developer || game.genres.length > 0) && (
+                  <p className="wall-label">
+                    {[game.developer, game.genres.map((g) => genreName(lang, g)).join(", ")]
+                      .filter(Boolean)
+                      .join(" · ")}
+                  </p>
+                )}
               </div>
               <ScoreMeter score={game.score} unscored={t.unscored} />
             </li>
