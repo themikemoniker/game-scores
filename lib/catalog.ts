@@ -24,7 +24,7 @@ export const COLUMNS = [
 ] as const;
 
 type RatingKind = keyof typeof WEIGHTS;
-type Cells = Record<(typeof COLUMNS)[number], string>;
+export type Cells = Record<(typeof COLUMNS)[number], string>;
 
 // `slug` looks up a single Game (the Game page); the rest filter the ranking.
 export type CatalogQuery = { search?: string; platform?: string; genre?: string; slug?: string };

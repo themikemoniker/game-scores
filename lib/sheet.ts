@@ -27,6 +27,16 @@ export async function readGameRows(): Promise<string[][]> {
   return res.data.values ?? [];
 }
 
+// Appends one row (in COLUMNS order) after the last row of the `Games` tab. RAW keeps every value
+// as typed text, so dates and IDs aren't reformatted by Sheets.
+export async function appendGameRow(row: string[]): Promise<void> {
+  await client().request({
+    url: `${base()}/values/Games!A:N:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,
+    method: "POST",
+    data: { values: [row] },
+  });
+}
+
 // Deletes the first row of the `Games` tab whose IGDB ID matches. No match (already gone) is a no-op.
 export async function deleteGameRow(igdbId: number): Promise<void> {
   const [ids, meta] = await Promise.all([
