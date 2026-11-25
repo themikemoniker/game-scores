@@ -134,6 +134,13 @@ export function readCatalog(rows: string[][], query: CatalogQuery = {}) {
     ids.add(c.igdb_id);
     games.push(parse(c));
   });
-  const visible = query.slug ? games.filter((g) => g.slug === query.slug) : games;
+  const search = query.search?.trim().toLowerCase();
+  const visible = games.filter(
+    (g) =>
+      (!query.slug || g.slug === query.slug) &&
+      (!search || g.name.toLowerCase().includes(search)) &&
+      (!query.platform || g.platforms.includes(query.platform)) &&
+      (!query.genre || g.genres.includes(query.genre)),
+  );
   return { games: visible.sort(byRank), invalidRows };
 }

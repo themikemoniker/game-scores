@@ -179,4 +179,37 @@ describe("readCatalog", () => {
     expect(games).toEqual([]);
     expect(invalidRows).toEqual([{ row: 2, reason }]);
   });
+
+  describe("search and filters", () => {
+    const rows = [
+      row({ igdb_id: "1", slug: "zelda", name: "The Legend of Zelda", platforms: "Switch", genres: "Adventure, RPG", critic_rating: "95", critic_count: "10" }),
+      row({ igdb_id: "2", slug: "zelda-2", name: "Zelda II", platforms: "NES", genres: "RPG", critic_rating: "80", critic_count: "10" }),
+      row({ igdb_id: "3", slug: "doom", name: "Doom", platforms: "PC, Switch", genres: "Shooter", critic_rating: "90", critic_count: "10" }),
+      row({ igdb_id: "4", slug: "hades", name: "Hades", platforms: "PC, Switch", genres: "RPG" }), // Unscored
+    ];
+    const names = (query: Parameters<typeof readCatalog>[1]) =>
+      readCatalog(rows, query).games.map((g) => g.name);
+
+    it("searches by name, ignoring case and surrounding spaces", () => {
+      expect(names({ search: "  zELDa " })).toEqual(["The Legend of Zelda", "Zelda II"]);
+    });
+
+    it("filters by Platform, keeping the ranking order", () => {
+      expect(names({ platform: "Switch" })).toEqual(["The Legend of Zelda", "Doom", "Hades"]);
+    });
+
+    it("filters by Genre, keeping the ranking order", () => {
+      expect(names({ genre: "RPG" })).toEqual(["The Legend of Zelda", "Zelda II", "Hades"]);
+    });
+
+    it("combines search, Platform and Genre", () => {
+      expect(names({ search: "zelda", platform: "Switch", genre: "RPG" })).toEqual(["The Legend of Zelda"]);
+      expect(names({ platform: "PC", genre: "RPG" })).toEqual(["Hades"]);
+    });
+
+    it("ignores empty values and returns nothing when no Game matches", () => {
+      expect(names({ search: "", platform: "", genre: "" })).toHaveLength(4);
+      expect(names({ search: "zelda", platform: "PC" })).toEqual([]);
+    });
+  });
 });
