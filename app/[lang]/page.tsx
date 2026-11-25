@@ -4,7 +4,7 @@ import { getCatalog } from "../../lib/catalog-cache";
 import { dictionary, genreName, hasLocale } from "../../lib/i18n";
 import { Cover } from "./cover";
 import { Masthead } from "./masthead";
-import { ScoreMeter } from "./score-meter";
+import { CrossReview, ScoreStamp, STEPS } from "./score-meter";
 
 type Params = Record<string, string | string[] | undefined>;
 const first = (v: Params[string]) => (Array.isArray(v) ? v[0] : v) ?? "";
@@ -39,6 +39,7 @@ export default async function Home({
           <h1 className="wordmark">Game Scores</h1>
           <p className="dek">{t.siteDescription}</p>
         </div>
+        {all.length > 0 && <p className="count-badge">{t.gamesCount(all.length)}</p>}
       </Masthead>
       <main className="page">
         {all.length > 0 && (
@@ -82,17 +83,31 @@ export default async function Home({
             {t.noMatchAfter}
           </p>
         )}
+        {games.length > 0 && (
+          <div className="ranking-head">
+            <h2>{t.backToRanking}</h2>
+            <p className="ranking-note">{t.rankingNote}</p>
+            <ul className="heat-key" aria-label={t.heatKey}>
+              {STEPS.map(({ step, range }) => (
+                <li key={step} className={`s${step}`}>
+                  {range}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <ol className="ranking">
           {games.map((game) => (
             <li key={game.slug} className={game.score === null ? "unscored" : undefined}>
               <Cover url={game.coverUrl} name={game.name} t={t} />
               <div className="label">
-                <h2>
+                <h3>
                   <Link href={`/${lang}/games/${game.slug}`}>{game.name}</Link>
-                </h2>
+                </h3>
                 <p className="meta">
                   {game.releaseDate?.slice(0, 4) ?? t.releaseUnknown}
-                  {game.platforms.length > 0 && ` · ${game.platforms.join(", ")}`}
+                  {game.platforms.length > 0 && ` · ${game.platforms.slice(0, 3).join(", ")}`}
+                  {game.platforms.length > 3 && ` +${game.platforms.length - 3}`}
                 </p>
                 {(game.developer || game.genres.length > 0) && (
                   <p className="wall-label">
@@ -102,7 +117,8 @@ export default async function Home({
                   </p>
                 )}
               </div>
-              <ScoreMeter score={game.score} unscored={t.unscored} />
+              <CrossReview game={game} lang={lang} t={t} />
+              <ScoreStamp score={game.score} unscored={t.unscored} />
             </li>
           ))}
         </ol>

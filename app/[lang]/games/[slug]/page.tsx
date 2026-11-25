@@ -4,7 +4,7 @@ import { getCatalog } from "../../../../lib/catalog-cache";
 import { dictionary, genreName, hasLocale } from "../../../../lib/i18n";
 import { Cover } from "../../cover";
 import { BackArrow, Masthead } from "../../masthead";
-import { ScoreMeter, scoreStep } from "../../score-meter";
+import { ScoreStamp, scoreStep } from "../../score-meter";
 
 export const revalidate = 600;
 
@@ -49,33 +49,35 @@ export default async function GamePage({ params }: { params: Promise<{ lang: str
           <Cover url={game.coverUrl} name={game.name} t={t} large />
           <section className="score-plate" aria-labelledby="score-heading">
             <h2 id="score-heading">{t.score}</h2>
-            <ScoreMeter score={game.score} unscored={t.unscored} size="lg" />
+            <ScoreStamp score={game.score} unscored={t.unscored} size="lg" />
             {(game.score === null || !breakdown) && <p className="unscored-explain">{t.unscoredExplain}</p>}
           </section>
-          <dl className="facts">
-            <div>
-              <dt>{t.released}</dt>
-              <dd>{game.releaseDate ? utc(game.releaseDate, { dateStyle: "long" }) : t.unknown}</dd>
-            </div>
-            <div>
-              <dt>{t.developer}</dt>
-              <dd>{game.developer || t.unknown}</dd>
-            </div>
-            <div>
-              <dt>{t.platforms}</dt>
-              <dd>{game.platforms.join(", ") || t.unknown}</dd>
-            </div>
-            <div>
-              <dt>{t.genres}</dt>
-              <dd>{game.genres.map((g) => genreName(lang, g)).join(", ") || t.noGenres}</dd>
-            </div>
-          </dl>
-          {game.description && (
-            <p className="description">
-              {t.inEnglish && <span className="note">{t.inEnglish} </span>}
-              <span lang="en">{game.description}</span>
-            </p>
-          )}
+          <div className="hero-text">
+            <dl className="facts">
+              <div>
+                <dt>{t.released}</dt>
+                <dd>{game.releaseDate ? utc(game.releaseDate, { dateStyle: "long" }) : t.unknown}</dd>
+              </div>
+              <div>
+                <dt>{t.developer}</dt>
+                <dd>{game.developer || t.unknown}</dd>
+              </div>
+              <div>
+                <dt>{t.platforms}</dt>
+                <dd>{game.platforms.join(", ") || t.unknown}</dd>
+              </div>
+              <div>
+                <dt>{t.genres}</dt>
+                <dd>{game.genres.map((g) => genreName(lang, g)).join(", ") || t.noGenres}</dd>
+              </div>
+            </dl>
+            {game.description && (
+              <p className="description">
+                {t.inEnglish && <span className="note">{t.inEnglish} </span>}
+                <span lang="en">{game.description}</span>
+              </p>
+            )}
+          </div>
         </article>
 
         {game.score !== null && breakdown && (
@@ -91,52 +93,40 @@ export default async function GamePage({ params }: { params: Promise<{ lang: str
                 <span className="key key-base" />
                 70
               </p>
-              <table>
-                <thead>
-                  <tr>
-                    <th scope="col">{t.externalRating}</th>
-                    <th scope="col">{t.rating}</th>
-                    <th scope="col">{t.reviews}</th>
-                    <th scope="col">{t.adjusted}</th>
-                    <th scope="col">{t.shareOfScore}</th>
-                  </tr>
-                </thead>
+              <div className="reviews-grid">
                 {breakdown.ratings.map((r) => (
-                  <tbody key={r.kind}>
-                    <tr>
-                      <th scope="row">{t.ratingLabels[r.kind]}</th>
-                      <td data-label={t.rating}>{num(r.rating)}</td>
-                      <td data-label={t.reviews}>{num(r.count, 0)}</td>
-                      <td data-label={t.adjusted} className="adjusted">
-                        {fixed(r.adjusted)}
-                      </td>
-                      <td data-label={t.shareOfScore}>{pct(r.share)}</td>
-                    </tr>
-                    <tr className="pull" aria-hidden="true">
-                      <td colSpan={5}>
-                        <PullFigure
-                          rating={r.rating}
-                          adjusted={r.adjusted}
-                          axis={axis}
-                          labels={[num(r.rating), fixed(r.adjusted)]}
-                        />
-                      </td>
-                    </tr>
-                  </tbody>
+                  <section className="review" key={r.kind} aria-labelledby={`rating-${r.kind}`}>
+                    <h3 id={`rating-${r.kind}`}>{t.ratingLabels[r.kind]}</h3>
+                    <dl>
+                      <div className="raw">
+                        <dt>{t.rating}</dt>
+                        <dd>{num(r.rating)}</dd>
+                      </div>
+                      <div className="adjusted">
+                        <dt>{t.adjusted}</dt>
+                        <dd>{fixed(r.adjusted)}</dd>
+                      </div>
+                      <div>
+                        <dt>{t.reviews}</dt>
+                        <dd>{num(r.count, 0)}</dd>
+                      </div>
+                      <div>
+                        <dt>{t.shareOfScore}</dt>
+                        <dd>{pct(r.share)}</dd>
+                      </div>
+                    </dl>
+                    <PullFigure rating={r.rating} adjusted={r.adjusted} axis={axis} />
+                  </section>
                 ))}
-                <tfoot>
-                  <tr>
-                    <th scope="row">{t.score}</th>
-                    <td colSpan={2} className="working">
-                      {breakdown.ratings.map((r) => `${fixed(r.adjusted)} × ${pct(r.share)}`).join(" + ")} =
-                    </td>
-                    <td data-label={t.score} className={`total s${scoreStep(game.score)}`}>
-                      {fixed(game.score)} → <span className="rounded">{Math.round(game.score)}</span>
-                    </td>
-                    <td className="total-share">100%</td>
-                  </tr>
-                </tfoot>
-              </table>
+              </div>
+              <div className="sum">
+                <p className="working">
+                  <span className="sr-only">{t.score}: </span>
+                  {breakdown.ratings.map((r) => `${fixed(r.adjusted)} × ${pct(r.share)}`).join(" + ")} ={" "}
+                  <span className="exact">{fixed(game.score)}</span>
+                </p>
+                <ScoreStamp score={game.score} unscored={t.unscored} />
+              </div>
               {breakdown.singleRating && (
                 <p className="note single">{t.singleRating(t.ratingLabels[missing].toLowerCase())}</p>
               )}
@@ -153,19 +143,18 @@ export default async function GamePage({ params }: { params: Promise<{ lang: str
   );
 }
 
-// One External Rating on the shared axis: the raw rating (ring, value above), the baseline of 70
-// (tick), and the adjusted rating (dot, value below) it was pulled to. Decoration only; the table row
-// above carries the same numbers for assistive technology.
+// One External Rating on the shared axis: the raw rating (ring), the baseline of 70 (tick) and the
+// adjusted rating (dot) it was pulled to. The values are printed in the box above, so the figure carries
+// no numbers beside its marks and none can collide; only the axis ends and the baseline are labelled.
+// A small pull nests the dot inside the ring. Decoration only, hidden from assistive technology.
 function PullFigure({
   rating,
   adjusted,
   axis,
-  labels,
 }: {
   rating: number;
   adjusted: number;
   axis: { lo: number; hi: number };
-  labels: [string, string];
 }) {
   const at = (v: number) => ((v - axis.lo) / (axis.hi - axis.lo)) * 100;
   const style = {
@@ -176,20 +165,15 @@ function PullFigure({
     "--span": Math.abs(at(rating) - at(adjusted)),
   } as React.CSSProperties;
   return (
-    <div className={`pull-figure${adjusted < rating ? " leftward" : ""}`} style={style}>
+    <div className={`pull-figure${adjusted < rating ? " leftward" : ""}`} style={style} aria-hidden="true">
       <span className="track" />
-      <span className="baseline" />
       <span className="segment" />
-      <span className="raw">
-        <span>{labels[0]}</span>
-      </span>
-      <span className="adj">
-        <span>{labels[1]}</span>
-      </span>
-      <span className="ends">
-        <span>{axis.lo}</span>
-        <span>{axis.hi}</span>
-      </span>
+      <span className="baseline" />
+      <span className="adj" />
+      <span className="raw" />
+      <span className="tick-label lo">{axis.lo}</span>
+      <span className="tick-label base">70</span>
+      <span className="tick-label hi">{axis.hi}</span>
     </div>
   );
 }

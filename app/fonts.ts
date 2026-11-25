@@ -1,7 +1,13 @@
-import { Archivo, Source_Serif_4 } from "next/font/google";
+import { Dela_Gothic_One, Zen_Kaku_Gothic_New } from "next/font/google";
 
-// Archivo (with its width axis) for headings, numerals and UI; Source Serif 4 for reading text.
-const display = Archivo({ subsets: ["latin"], axes: ["wdth"], variable: "--font-display", display: "swap" });
-const serif = Source_Serif_4({ subsets: ["latin"], axes: ["opsz"], variable: "--font-serif", display: "swap" });
+// Dela Gothic One for the wordmark, section titles and every Score and rank numeral;
+// Zen Kaku Gothic New for labels, controls and reading text.
+const display = Dela_Gothic_One({ weight: "400", subsets: ["latin"], variable: "--font-display", display: "swap" });
+const ui = Zen_Kaku_Gothic_New({
+  weight: ["400", "700", "900"],
+  subsets: ["latin"],
+  variable: "--font-ui",
+  display: "swap",
+});
 
-export const fontVariables = `${display.variable} ${serif.variable}`;
+export const fontVariables = `${display.variable} ${ui.variable}`;
