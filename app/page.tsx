@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getCatalog } from "../lib/catalog-cache";
 
 export const revalidate = 600;
@@ -17,7 +18,9 @@ export default async function Home() {
               <div className="cover-placeholder" role="img" aria-label={`${game.name}: no cover`} />
             )}
             <div>
-              <h2>{game.name}</h2>
+              <h2>
+                <Link href={`/games/${game.slug}`}>{game.name}</Link>
+              </h2>
               <p>
                 {game.releaseDate?.slice(0, 4) ?? "Release date unknown"}
                 {game.platforms.length > 0 && ` · ${game.platforms.join(", ")}`}

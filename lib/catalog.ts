@@ -26,7 +26,8 @@ export const COLUMNS = [
 type RatingKind = keyof typeof WEIGHTS;
 type Cells = Record<(typeof COLUMNS)[number], string>;
 
-export type CatalogQuery = { search?: string; platform?: string; genre?: string };
+// `slug` looks up a single Game (the Game page); the rest filter the ranking.
+export type CatalogQuery = { search?: string; platform?: string; genre?: string; slug?: string };
 
 function adjust(kind: RatingKind, ratingCell: string, countCell: string) {
   if (!ratingCell || !countCell) return null;
@@ -116,7 +117,7 @@ function problem(c: Cells): string | null {
 export type InvalidRow = { row: number; reason: string };
 
 // `rows` are the data rows of the `Games` tab, starting at Sheet row 2.
-export function readCatalog(rows: string[][], _query: CatalogQuery = {}) {
+export function readCatalog(rows: string[][], query: CatalogQuery = {}) {
   const games: Game[] = [];
   const invalidRows: InvalidRow[] = [];
   const slugs = new Set<string>();
@@ -133,5 +134,6 @@ export function readCatalog(rows: string[][], _query: CatalogQuery = {}) {
     ids.add(c.igdb_id);
     games.push(parse(c));
   });
-  return { games: games.sort(byRank), invalidRows };
+  const visible = query.slug ? games.filter((g) => g.slug === query.slug) : games;
+  return { games: visible.sort(byRank), invalidRows };
 }

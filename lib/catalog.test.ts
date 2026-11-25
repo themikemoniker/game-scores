@@ -129,6 +129,42 @@ describe("readCatalog", () => {
     ]);
   });
 
+  it("looks up a single Game by slug, with its Score Breakdown", () => {
+    const { games } = readCatalog(
+      [
+        row({ igdb_id: "1", slug: "a-2020", name: "A" }),
+        row({
+          igdb_id: "2",
+          slug: "b-2021",
+          name: "B",
+          critic_rating: "90",
+          critic_count: "10",
+          user_rating: "50",
+          user_count: "100",
+        }),
+      ],
+      { slug: "b-2021" },
+    );
+    expect(games.map((g) => g.name)).toEqual(["B"]);
+    expect(games[0].score).toBe(70);
+    expect(games[0].breakdown).toEqual({
+      ratings: [
+        { kind: "critic", rating: 90, count: 10, adjusted: 80, share: 0.5 },
+        { kind: "user", rating: 50, count: 100, adjusted: 60, share: 0.5 },
+      ],
+      singleRating: false,
+    });
+  });
+
+  it("finds no Game for an unknown slug or the slug of an invalid row", () => {
+    const rows = [
+      row({ igdb_id: "1", slug: "a", name: "A" }),
+      row({ igdb_id: "2", slug: "bad", name: "" }),
+    ];
+    expect(readCatalog(rows, { slug: "nope" }).games).toEqual([]);
+    expect(readCatalog(rows, { slug: "bad" }).games).toEqual([]);
+  });
+
   it.each([
     [{ igdb_id: "x" }, 'igdb_id is not a positive whole number: "x"'],
     [{ slug: "" }, "slug is missing"],

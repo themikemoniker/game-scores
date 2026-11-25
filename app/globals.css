@@ -26,7 +26,8 @@ body {
 }
 
 .cover-placeholder,
-.ranking img {
+.ranking img,
+.game-info img {
   width: 90px;
   height: 120px;
   flex-shrink: 0;
@@ -34,7 +35,52 @@ body {
   background: #ddd;
 }
 
-.score {
+.game-info {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.game-info img,
+.game-info .cover-placeholder {
+  width: 180px;
+  height: 240px;
+}
+
+.game-info dt {
+  font-weight: bold;
+}
+
+.game-info dd {
+  margin: 0 0 0.5rem;
+}
+
+.description {
+  white-space: pre-line;
+}
+
+.game .score {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.game table {
+  border-collapse: collapse;
+}
+
+.game th,
+.game td {
+  padding: 0.25rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.note,
+.synced {
+  color: #555;
+}
+
+.ranking .score {
   margin-left: auto !important;
   font-size: 1.5rem;
   font-weight: bold;
