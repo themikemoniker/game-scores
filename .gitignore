@@ -4,3 +4,9 @@ node_modules
 next-env.d.ts
 *.tsbuildinfo
 .vercel
+.claude/settings.local.json
+# Impeccable: keep only the committed design artifacts
+.impeccable/*
+!.impeccable/config.json
+!.impeccable/design.json
+!.impeccable/surfaces/
