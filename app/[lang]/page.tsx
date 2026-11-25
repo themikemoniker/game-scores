@@ -2,7 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCatalog } from "../../lib/catalog-cache";
 import { dictionary, genreName, hasLocale } from "../../lib/i18n";
-import { Switcher } from "./switcher";
+import { Cover } from "./cover";
+import { Masthead } from "./masthead";
+import { ScoreMeter } from "./score-meter";
 
 type Params = Record<string, string | string[] | undefined>;
 const first = (v: Params[string]) => (Array.isArray(v) ? v[0] : v) ?? "";
@@ -31,66 +33,73 @@ export default async function Home({
   const queryString = new URLSearchParams(Object.entries(query).filter(([, v]) => v)).toString();
 
   return (
-    <main>
-      <Switcher lang={lang} rest={queryString && `?${queryString}`} />
-      <h1>Game Scores</h1>
-      {all.length > 0 && (
-        <form className="filters" role="search">
-          <label>
-            {t.search} <input type="search" name="search" defaultValue={query.search} />
-          </label>
-          <label>
-            {t.platform}{" "}
-            <select name="platform" defaultValue={query.platform}>
-              <option value="">{t.allPlatforms}</option>
-              {platforms.map((o) => (
-                <option key={o}>{o}</option>
-              ))}
-            </select>
-          </label>
-          <label>
-            {t.genre}{" "}
-            <select name="genre" defaultValue={query.genre}>
-              <option value="">{t.allGenres}</option>
-              {genres.map((o) => (
-                <option key={o.value} value={o.value}>
-                  {o.label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <button type="submit">{t.filter}</button>
-          {filtered && <Link href={`/${lang}`}>{t.clear}</Link>}
-        </form>
-      )}
-      {all.length === 0 && <p>{t.catalogEmpty}</p>}
-      {all.length > 0 && games.length === 0 && (
-        <p>
-          {t.noMatch} <Link href={`/${lang}`}>{t.clearThem}</Link>
-          {t.noMatchAfter}
-        </p>
-      )}
-      <ol className="ranking">
-        {games.map((game) => (
-          <li key={game.slug}>
-            {game.coverUrl ? (
-              <img src={game.coverUrl} alt={t.cover(game.name)} width={90} height={120} loading="lazy" />
-            ) : (
-              <div className="cover-placeholder" role="img" aria-label={t.noCover(game.name)} />
-            )}
-            <div>
-              <h2>
-                <Link href={`/${lang}/games/${game.slug}`}>{game.name}</Link>
-              </h2>
-              <p>
-                {game.releaseDate?.slice(0, 4) ?? t.releaseUnknown}
-                {game.platforms.length > 0 && ` · ${game.platforms.join(", ")}`}
-              </p>
+    <>
+      <Masthead lang={lang} rest={queryString && `?${queryString}`}>
+        <div className="masthead-title">
+          <h1 className="wordmark">Game Scores</h1>
+          <p className="dek">{t.siteDescription}</p>
+        </div>
+      </Masthead>
+      <main className="page">
+        {all.length > 0 && (
+          <form className="filters" role="search">
+            <label className="field field-search">
+              <span>{t.search}</span>
+              <input type="search" name="search" defaultValue={query.search} />
+            </label>
+            <label className="field">
+              <span>{t.platform}</span>
+              <select name="platform" defaultValue={query.platform}>
+                <option value="">{t.allPlatforms}</option>
+                {platforms.map((o) => (
+                  <option key={o}>{o}</option>
+                ))}
+              </select>
+            </label>
+            <label className="field">
+              <span>{t.genre}</span>
+              <select name="genre" defaultValue={query.genre}>
+                <option value="">{t.allGenres}</option>
+                {genres.map((o) => (
+                  <option key={o.value} value={o.value}>
+                    {o.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <div className="filter-actions">
+              <button type="submit" className="button">
+                {t.filter}
+              </button>
+              {filtered && <Link href={`/${lang}`}>{t.clear}</Link>}
             </div>
-            <p className="score">{game.score === null ? t.unscored : Math.round(game.score)}</p>
-          </li>
-        ))}
-      </ol>
-    </main>
+          </form>
+        )}
+        {all.length === 0 && <p className="empty">{t.catalogEmpty}</p>}
+        {all.length > 0 && games.length === 0 && (
+          <p className="empty">
+            {t.noMatch} <Link href={`/${lang}`}>{t.clearThem}</Link>
+            {t.noMatchAfter}
+          </p>
+        )}
+        <ol className="ranking">
+          {games.map((game) => (
+            <li key={game.slug} className={game.score === null ? "unscored" : undefined}>
+              <Cover url={game.coverUrl} name={game.name} t={t} />
+              <div className="label">
+                <h2>
+                  <Link href={`/${lang}/games/${game.slug}`}>{game.name}</Link>
+                </h2>
+                <p className="meta">
+                  {game.releaseDate?.slice(0, 4) ?? t.releaseUnknown}
+                  {game.platforms.length > 0 && ` · ${game.platforms.join(", ")}`}
+                </p>
+              </div>
+              <ScoreMeter score={game.score} unscored={t.unscored} />
+            </li>
+          ))}
+        </ol>
+      </main>
+    </>
   );
 }
