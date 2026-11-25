@@ -210,6 +210,10 @@ img {
   flex-wrap: wrap;
 }
 
+.masthead.compact .masthead-inner > :last-child:not(:first-child) {
+  margin-inline-start: auto;
+}
+
 .masthead-title {
   padding-top: var(--space-6);
 }
@@ -1502,6 +1506,10 @@ select:focus-visible {
 
   .wordmark-sub {
     margin-inline-start: var(--space-1);
+  }
+
+  .compact .wordmark {
+    font-size: 1.125rem;
   }
 
   .switcher a,
