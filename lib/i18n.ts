@@ -124,7 +124,7 @@ const es: Dictionary = {
     "Card & Board Game": "Juego de cartas y de mesa",
     Fighting: "Lucha",
     Music: "Música",
-    Platform: "Plataformas",
+    Platform: "De plataformas",
     "Point-and-click": "Aventura gráfica",
     Puzzle: "Puzle",
     "Quiz/Trivia": "Preguntas y respuestas",
