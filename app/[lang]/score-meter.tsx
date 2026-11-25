@@ -17,14 +17,19 @@ export function ScoreMeter({
       </div>
     );
   }
-  const shown = Math.round(score);
-  const step = shown >= 90 ? 5 : shown >= 80 ? 4 : shown >= 70 ? 3 : shown >= 50 ? 2 : 1;
+  const step = scoreStep(score);
   return (
     <div className={`score-meter ${size} s${step}`} style={{ "--score": score } as React.CSSProperties}>
-      <span className="score-value">{shown}</span>
+      <span className="score-value">{Math.round(score)}</span>
       <span className="scale" aria-hidden="true">
         <span className="fill" />
       </span>
     </div>
   );
+}
+
+// The step of the colour scale a Score falls on, by its shown (rounded) value.
+export function scoreStep(score: number) {
+  const shown = Math.round(score);
+  return shown >= 90 ? 5 : shown >= 80 ? 4 : shown >= 70 ? 3 : shown >= 50 ? 2 : 1;
 }

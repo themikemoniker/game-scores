@@ -4,7 +4,7 @@ import { getCatalog } from "../../../../lib/catalog-cache";
 import { dictionary, genreName, hasLocale } from "../../../../lib/i18n";
 import { Cover } from "../../cover";
 import { Masthead } from "../../masthead";
-import { ScoreMeter } from "../../score-meter";
+import { ScoreMeter, scoreStep } from "../../score-meter";
 
 export const revalidate = 600;
 
@@ -27,6 +27,12 @@ export default async function GamePage({ params }: { params: Promise<{ lang: str
   const { breakdown } = game;
   // With a single External Rating, the other kind is the missing one.
   const missing = breakdown?.ratings[0].kind === "critic" ? "user" : "critic";
+  // The pull figures share one axis, zoomed to the ratings and the baseline so a few points of pull stay visible.
+  const values = [70, ...(breakdown?.ratings.flatMap((r) => [r.rating, r.adjusted]) ?? [])];
+  const axis = {
+    lo: Math.max(0, Math.floor((Math.min(...values) - 4) / 10) * 10),
+    hi: Math.min(100, Math.ceil((Math.max(...values) + 4) / 10) * 10),
+  };
 
   return (
     <>
@@ -74,6 +80,14 @@ export default async function GamePage({ params }: { params: Promise<{ lang: str
             <div className="breakdown-inner">
               <h2 id="breakdown-heading">{t.scoreBreakdown}</h2>
               <p className="breakdown-intro">{t.breakdownIntro}</p>
+              <p className="pull-key" aria-hidden="true">
+                <span className="key key-raw" />
+                {t.rating}
+                <span className="key key-adj" />
+                {t.adjusted}
+                <span className="key key-base" />
+                70
+              </p>
               <table>
                 <thead>
                   <tr>
@@ -97,7 +111,12 @@ export default async function GamePage({ params }: { params: Promise<{ lang: str
                     </tr>
                     <tr className="pull" aria-hidden="true">
                       <td colSpan={5}>
-                        <PullFigure rating={r.rating} adjusted={r.adjusted} />
+                        <PullFigure
+                          rating={r.rating}
+                          adjusted={r.adjusted}
+                          axis={axis}
+                          labels={[num(r.rating), fixed(r.adjusted)]}
+                        />
                       </td>
                     </tr>
                   </tbody>
@@ -108,8 +127,8 @@ export default async function GamePage({ params }: { params: Promise<{ lang: str
                     <td colSpan={2} className="working">
                       {breakdown.ratings.map((r) => `${fixed(r.adjusted)} × ${pct(r.share)}`).join(" + ")} =
                     </td>
-                    <td data-label={t.score} className="total">
-                      {fixed(game.score)}
+                    <td data-label={t.score} className={`total s${scoreStep(game.score)}`}>
+                      {fixed(game.score)} → <span className="rounded">{Math.round(game.score)}</span>
                     </td>
                     <td className="total-share">100%</td>
                   </tr>
@@ -131,28 +150,42 @@ export default async function GamePage({ params }: { params: Promise<{ lang: str
   );
 }
 
-// One External Rating on a 0–100 scale: the raw rating (ring), the baseline of 70 (tick), and the
-// adjusted rating (dot) it was pulled to. Decoration only; the table row above carries the numbers.
-function PullFigure({ rating, adjusted }: { rating: number; adjusted: number }) {
-  const from = Math.min(rating, adjusted);
+// One External Rating on the shared axis: the raw rating (ring, value above), the baseline of 70
+// (tick), and the adjusted rating (dot, value below) it was pulled to. Decoration only; the table row
+// above carries the same numbers for assistive technology.
+function PullFigure({
+  rating,
+  adjusted,
+  axis,
+  labels,
+}: {
+  rating: number;
+  adjusted: number;
+  axis: { lo: number; hi: number };
+  labels: [string, string];
+}) {
+  const at = (v: number) => ((v - axis.lo) / (axis.hi - axis.lo)) * 100;
   const style = {
-    "--raw": rating,
-    "--adj": adjusted,
-    "--from": from,
-    "--span": Math.abs(rating - adjusted),
+    "--raw": at(rating),
+    "--adj": at(adjusted),
+    "--base": at(70),
+    "--from": at(Math.min(rating, adjusted)),
+    "--span": Math.abs(at(rating) - at(adjusted)),
   } as React.CSSProperties;
   return (
     <div className={`pull-figure${adjusted < rating ? " leftward" : ""}`} style={style}>
       <span className="track" />
-      <span className="baseline">
-        <span>70</span>
-      </span>
+      <span className="baseline" />
       <span className="segment" />
-      <span className="raw" />
-      <span className="adj" />
+      <span className="raw">
+        <span>{labels[0]}</span>
+      </span>
+      <span className="adj">
+        <span>{labels[1]}</span>
+      </span>
       <span className="ends">
-        <span>0</span>
-        <span>100</span>
+        <span>{axis.lo}</span>
+        <span>{axis.hi}</span>
       </span>
     </div>
   );
