@@ -778,6 +778,10 @@ select:focus-visible {
   font-size: var(--text-xl);
 }
 
+.game-hero .cover-placeholder span {
+  font-size: var(--text-2xl);
+}
+
 .game-hero .cover {
   grid-area: cover;
   width: 100%;
@@ -1446,10 +1450,6 @@ select:focus-visible {
   .score-plate {
     margin-top: 0;
     align-self: end;
-  }
-
-  .game-hero .cover-placeholder span {
-    font-size: var(--text-2xl);
   }
 
   /* Each External Rating becomes its own block: label, then the figures as labelled pairs. */
