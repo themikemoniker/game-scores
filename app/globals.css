@@ -207,6 +207,7 @@ img {
 .masthead.compact .masthead-inner {
   padding-block: var(--space-4);
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .masthead-title {
@@ -235,7 +236,7 @@ img {
   font-weight: 500;
   font-stretch: 100%;
   color: var(--wall-ink-soft);
-  margin-left: var(--space-2);
+  margin-inline-start: var(--space-2);
   letter-spacing: 0;
 }
 
@@ -318,7 +319,7 @@ select {
 
 select {
   appearance: none;
-  padding-right: 2.25rem;
+  padding-inline-end: 2.25rem;
   background-image:
     linear-gradient(45deg, transparent 50%, var(--ink-soft) 50%),
     linear-gradient(135deg, var(--ink-soft) 50%, transparent 50%);
@@ -855,7 +856,7 @@ select:focus-visible {
   font-size: var(--text-sm);
   font-weight: 600;
   color: var(--ink-soft);
-  text-align: right;
+  text-align: end;
   padding: 0 0 var(--space-3) var(--space-4);
   border-bottom: 2px solid var(--ink);
   vertical-align: bottom;
@@ -864,21 +865,21 @@ select:focus-visible {
 .breakdown thead th:first-child,
 .breakdown tbody th,
 .breakdown tfoot th {
-  text-align: left;
-  padding-left: 0;
+  text-align: start;
+  padding-inline-start: 0;
 }
 
 .breakdown tbody tr:first-child > * {
   padding: var(--space-4) 0 var(--space-2) var(--space-4);
   font-size: var(--text-lg);
-  text-align: right;
+  text-align: end;
 }
 
 .breakdown tbody tr:first-child th {
   font-weight: 700;
   font-size: var(--text-md);
-  text-align: left;
-  padding-left: 0;
+  text-align: start;
+  padding-inline-start: 0;
 }
 
 .breakdown td.adjusted,
@@ -897,7 +898,7 @@ select:focus-visible {
 
 .breakdown tfoot > tr > * {
   padding: var(--space-4) 0 0 var(--space-4);
-  text-align: right;
+  text-align: end;
   vertical-align: baseline;
   border-top: 3px double var(--ink);
 }
@@ -905,8 +906,8 @@ select:focus-visible {
 .breakdown tfoot > tr > th {
   font-size: var(--text-md);
   font-weight: 800;
-  text-align: left;
-  padding-left: 0;
+  text-align: start;
+  padding-inline-start: 0;
 }
 
 .breakdown .working {
@@ -960,7 +961,7 @@ select:focus-visible {
 }
 
 .pull-key .key:not(:first-child) {
-  margin-left: var(--space-4);
+  margin-inline-start: var(--space-4);
 }
 
 .key-raw,
@@ -1234,7 +1235,7 @@ select:focus-visible {
 .data-table th,
 .data-table td {
   padding: var(--space-3) var(--space-4) var(--space-3) 0;
-  text-align: left;
+  text-align: start;
   vertical-align: middle;
   border-bottom: 1px solid var(--rule);
 }
@@ -1270,7 +1271,7 @@ select:focus-visible {
 .data-table td.actions {
   display: flex;
   gap: var(--space-2);
-  padding-right: 0;
+  padding-inline-end: 0;
 }
 
 .row-form {
@@ -1414,7 +1415,7 @@ select:focus-visible {
 
   .breakdown tbody tr:first-child > * {
     padding: 0;
-    text-align: left;
+    text-align: start;
   }
 
   .breakdown tbody tr:first-child th {
@@ -1449,7 +1450,7 @@ select:focus-visible {
 
   .breakdown tfoot > tr > * {
     padding: var(--space-4) 0 0;
-    text-align: left;
+    text-align: start;
     border-top: 0;
   }
 
@@ -1467,7 +1468,7 @@ select:focus-visible {
 
   .breakdown .total {
     border-top: 0;
-    text-align: right;
+    text-align: end;
   }
 
   .breakdown .total-share {
@@ -1500,7 +1501,7 @@ select:focus-visible {
   }
 
   .wordmark-sub {
-    margin-left: var(--space-1);
+    margin-inline-start: var(--space-1);
   }
 
   .switcher a,
@@ -1565,7 +1566,7 @@ select:focus-visible {
     grid-column: 2;
     grid-row: 1 / span 2;
     font-size: var(--text-xl);
-    text-align: right;
+    text-align: end;
   }
 
   .data-table.catalog-table td.unscored-cell {
