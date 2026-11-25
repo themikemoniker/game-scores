@@ -96,3 +96,9 @@ body {
   gap: 0.5rem 1rem;
   margin-bottom: 1.5rem;
 }
+
+.switcher {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}

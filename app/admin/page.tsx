@@ -55,7 +55,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
       </form>
       {imported && (
         <p role="status">
-          Imported. <Link href={`/games/${imported}`}>See it on the site</Link>.
+          Imported. <Link href={`/en/games/${imported}`}>See it on the site</Link>.
         </p>
       )}
       {importError && <p role="alert">{importError}</p>}
@@ -143,7 +143,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
             {games.map((game) => (
               <tr key={game.igdbId}>
                 <td>
-                  <Link href={`/games/${game.slug}`}>{game.name}</Link>
+                  <Link href={`/en/games/${game.slug}`}>{game.name}</Link>
                 </td>
                 <td>{game.igdbId}</td>
                 <td>{game.score === null ? "Unscored" : Math.round(game.score)}</td>
