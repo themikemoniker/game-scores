@@ -245,12 +245,6 @@ img {
   transform: var(--skew);
 }
 
-@media (prefers-color-scheme: dark) {
-  .count-badge {
-    color: oklch(0.15 0.006 95);
-  }
-}
-
 .switcher {
   grid-area: switcher;
   justify-self: end;

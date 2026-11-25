@@ -1,135 +1,90 @@
 ---
 name: Game Scores
-description: A hand-picked Catalog of Games, hung as an exhibition catalogue and ranked by a Score that shows its working.
+description: A hand-picked Catalog of Games, printed as a Japanese weekly game magazine's chart page, with a cross-review box for every Game and the Score stamped in a heat circle.
 colors:
-  wall: "oklch(0.27 0.065 254)"
-  wall-deep: "oklch(0.22 0.06 254)"
-  wall-ink: "oklch(0.97 0.012 250)"
-  wall-ink-soft: "oklch(0.83 0.035 250)"
-  stock: "oklch(0.986 0.003 250)"
-  stock-sunk: "oklch(0.955 0.009 250)"
-  ink: "oklch(0.23 0.035 255)"
-  ink-soft: "oklch(0.44 0.035 255)"
-  rule: "oklch(0.87 0.012 255)"
-  rule-strong: "oklch(0.62 0.03 255)"
-  link: "oklch(0.42 0.13 256)"
-  pull: "oklch(0.45 0.15 256)"
-  focus: "oklch(0.55 0.19 256)"
-  s1: "oklch(0.52 0.17 28)"
-  s2: "oklch(0.54 0.14 50)"
-  s3: "oklch(0.53 0.105 108)"
-  s4: "oklch(0.52 0.13 140)"
-  s5: "oklch(0.47 0.12 160)"
-  danger: "oklch(0.5 0.17 28)"
-  danger-tint: "oklch(0.96 0.02 28)"
-  caution: "oklch(0.5 0.11 70)"
-  caution-tint: "oklch(0.965 0.03 85)"
-  success: "oklch(0.46 0.1 160)"
-  success-tint: "oklch(0.96 0.025 160)"
-  wall-dark: "oklch(0.29 0.085 244)"
-  wall-deep-dark: "oklch(0.25 0.08 244)"
-  wall-ink-dark: "oklch(0.96 0.012 250)"
-  wall-ink-soft-dark: "oklch(0.8 0.035 250)"
-  stock-dark: "oklch(0.2 0.06 244)"
-  stock-sunk-dark: "oklch(0.235 0.068 244)"
-  ink-dark: "oklch(0.95 0.012 250)"
-  ink-soft-dark: "oklch(0.78 0.03 250)"
-  rule-dark: "oklch(0.34 0.065 244)"
-  rule-strong-dark: "oklch(0.56 0.06 244)"
-  link-dark: "oklch(0.82 0.09 250)"
-  pull-dark: "oklch(0.8 0.11 250)"
-  focus-dark: "oklch(0.8 0.13 250)"
-  s1-dark: "oklch(0.7 0.16 28)"
-  s2-dark: "oklch(0.76 0.14 55)"
-  s3-dark: "oklch(0.83 0.13 108)"
-  s4-dark: "oklch(0.79 0.15 138)"
-  s5-dark: "oklch(0.74 0.13 160)"
-  danger-dark: "oklch(0.74 0.15 28)"
+  yellow: "oklch(0.885 0.18 94)"
+  yellow-tint: "oklch(0.965 0.06 95)"
+  yellow-tint-dark: "oklch(0.29 0.05 92)"
+  on-yellow: "oklch(0.18 0.006 95)"
+  on-yellow-soft: "oklch(0.36 0.06 80)"
+  red: "oklch(0.55 0.22 28)"
+  red-dark: "oklch(0.64 0.2 28)"
+  on-red: "oklch(0.99 0.004 95)"
+  on-red-dark: "oklch(0.15 0.006 95)"
+  paper: "oklch(0.995 0 0)"
+  paper-dark: "oklch(0.17 0.006 95)"
+  paper-sunk: "oklch(0.96 0.003 95)"
+  paper-sunk-dark: "oklch(0.215 0.008 95)"
+  ink: "oklch(0.18 0.006 95)"
+  ink-dark: "oklch(0.96 0.008 95)"
+  ink-soft: "oklch(0.42 0.012 95)"
+  ink-soft-dark: "oklch(0.76 0.012 95)"
+  rule-soft: "oklch(0.84 0.012 95)"
+  rule-soft-dark: "oklch(0.34 0.01 95)"
+  s5: "oklch(0.55 0.22 28)"
+  s5-ink: "oklch(0.99 0.004 95)"
+  s4: "oklch(0.73 0.17 52)"
+  s4-ink: "oklch(0.18 0.006 95)"
+  s3: "oklch(0.885 0.18 94)"
+  s3-ink: "oklch(0.18 0.006 95)"
+  s2: "oklch(0.83 0.075 230)"
+  s2-ink: "oklch(0.18 0.006 95)"
+  s1: "oklch(0.45 0.15 258)"
+  s1-ink: "oklch(0.99 0.004 95)"
+  success-tint: "oklch(0.95 0.05 150)"
+  success-tint-dark: "oklch(0.28 0.05 150)"
+  danger: "oklch(0.5 0.2 28)"
+  danger-dark: "oklch(0.7 0.17 28)"
+  danger-tint: "oklch(0.95 0.04 28)"
   danger-tint-dark: "oklch(0.27 0.06 28)"
-  caution-dark: "oklch(0.82 0.12 80)"
-  caution-tint-dark: "oklch(0.28 0.05 80)"
-  success-dark: "oklch(0.78 0.12 160)"
-  success-tint-dark: "oklch(0.26 0.05 165)"
 typography:
   display:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(2.75rem, 1.6rem + 5.4vw, 5.5rem)"
-    fontWeight: 800
-    lineHeight: 0.95
-    letterSpacing: "-0.035em"
-    fontVariation: "\"wdth\" 125"
-  score-numeral-lg:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(4.5rem, 3rem + 5vw, 6rem)"
-    fontWeight: 800
-    lineHeight: 0.9
-    letterSpacing: "-0.03em"
-    fontFeature: "\"tnum\""
-    fontVariation: "\"wdth\" 112"
-  score-numeral:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "2.75rem"
-    fontWeight: 800
-    lineHeight: 0.9
-    letterSpacing: "-0.03em"
-    fontFeature: "\"tnum\""
-    fontVariation: "\"wdth\" 112"
-  headline:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(2rem, 1.4rem + 2.6vw, 3.25rem)"
-    fontWeight: 800
-    lineHeight: 1.05
-    letterSpacing: "-0.03em"
-    fontVariation: "\"wdth\" 112"
-  plate-numeral:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(2rem, 1.4rem + 2.6vw, 3.25rem)"
-    fontWeight: 800
-    lineHeight: 1
-    fontFeature: "\"tnum\""
-    fontVariation: "\"wdth\" 125"
-  section-title:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "1.75rem"
-    fontWeight: 800
-    lineHeight: 1.25
-    letterSpacing: "-0.02em"
-    fontVariation: "\"wdth\" 112"
-  title:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "1.75rem"
-    fontWeight: 700
-    lineHeight: 1.25
-    letterSpacing: "-0.01em"
-  dek:
-    fontFamily: "Source Serif 4, Georgia, serif"
-    fontSize: "1.3125rem"
+    fontFamily: "Dela Gothic One, Arial Black, sans-serif"
+    fontSize: "clamp(2.75rem, 1.4rem + 6vw, 6rem)"
     fontWeight: 400
-    lineHeight: 1.25
+    lineHeight: 0.9
+    letterSpacing: "-0.03em"
+  headline:
+    fontFamily: "Dela Gothic One, Arial Black, sans-serif"
+    fontSize: "clamp(2.25rem, 1.5rem + 3.4vw, 4rem)"
+    fontWeight: 400
+    lineHeight: 1.05
+    letterSpacing: "-0.02em"
+  title:
+    fontFamily: "Dela Gothic One, Arial Black, sans-serif"
+    fontSize: "clamp(2rem, 1.4rem + 2.4vw, 3rem)"
+    fontWeight: 400
+    lineHeight: 1.15
+  numeral:
+    fontFamily: "Dela Gothic One, Arial Black, sans-serif"
+    fontSize: "1.875rem"
+    fontWeight: 400
+    lineHeight: 1.1
+    letterSpacing: "-0.03em"
+  item:
+    fontFamily: "Zen Kaku Gothic New, Hiragino Sans, Helvetica Neue, Arial, sans-serif"
+    fontSize: "1.375rem"
+    fontWeight: 900
+    lineHeight: 1.15
   body:
-    fontFamily: "Source Serif 4, Georgia, serif"
+    fontFamily: "Zen Kaku Gothic New, Hiragino Sans, Helvetica Neue, Arial, sans-serif"
     fontSize: "1.0625rem"
     fontWeight: 400
-    lineHeight: 1.55
-  label:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "0.9375rem"
-    fontWeight: 600
-    lineHeight: 1.55
+    lineHeight: 1.7
+    fontFeature: "tnum"
   meta:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontFamily: "Zen Kaku Gothic New, Hiragino Sans, Helvetica Neue, Arial, sans-serif"
     fontSize: "0.9375rem"
     fontWeight: 400
-    lineHeight: 1.55
-    fontFeature: "\"tnum\""
-  caption:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    lineHeight: 1.5
+  label:
+    fontFamily: "Zen Kaku Gothic New, Hiragino Sans, Helvetica Neue, Arial, sans-serif"
     fontSize: "0.8125rem"
-    fontWeight: 700
-    lineHeight: 1
+    fontWeight: 900
+    letterSpacing: "0.08em"
 rounded:
-  control: "3px"
-  cover: "2px"
+  none: "0"
+  circle: "50%"
 spacing:
   space-1: "0.25rem"
   space-2: "0.5rem"
@@ -139,94 +94,113 @@ spacing:
   space-6: "2rem"
   space-7: "3rem"
   space-8: "4.5rem"
-  gutter: "clamp(1rem, 0.5rem + 2.5vw, 2.5rem)"
-  page: "66rem"
+  gutter: "clamp(1rem, 0.5rem + 2.5vw, 4rem)"
+  page: "80rem"
   measure: "66ch"
 components:
   button-primary:
-    backgroundColor: "{colors.wall}"
-    textColor: "{colors.wall-ink}"
-    typography: "{typography.label}"
-    rounded: "{rounded.control}"
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.yellow}"
+    rounded: "{rounded.none}"
+    padding: "0 1.5rem"
+    height: "2.75rem"
+  button-primary-dark:
+    backgroundColor: "{colors.yellow}"
+    textColor: "{colors.on-yellow}"
+    rounded: "{rounded.none}"
     padding: "0 1.5rem"
     height: "2.75rem"
   button-primary-hover:
-    backgroundColor: "{colors.wall-deep}"
-  button-primary-dark:
-    backgroundColor: "{colors.wall-ink-dark}"
-    textColor: "{colors.wall-dark}"
-  button-primary-dark-hover:
-    backgroundColor: "{colors.wall-ink-soft-dark}"
-  button-small:
-    padding: "0 1rem"
-    height: "2.25rem"
+    backgroundColor: "{colors.red}"
+    textColor: "{colors.on-red}"
   button-secondary:
-    backgroundColor: "transparent"
+    backgroundColor: "{colors.paper}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.control}"
-  button-secondary-hover:
-    backgroundColor: "{colors.stock-sunk}"
+    rounded: "{rounded.none}"
   button-danger:
-    backgroundColor: "transparent"
+    backgroundColor: "{colors.paper}"
     textColor: "{colors.danger}"
-    rounded: "{rounded.control}"
-  button-danger-hover:
-    backgroundColor: "{colors.danger-tint}"
+    rounded: "{rounded.none}"
   button-caution:
-    backgroundColor: "transparent"
-    textColor: "{colors.caution}"
-    rounded: "{rounded.control}"
-  button-caution-hover:
-    backgroundColor: "{colors.caution-tint}"
-  button-quiet:
-    backgroundColor: "transparent"
-    textColor: "{colors.wall-ink}"
-    rounded: "{rounded.control}"
-  button-quiet-hover:
-    backgroundColor: "{colors.wall-deep}"
+    backgroundColor: "{colors.yellow}"
+    textColor: "{colors.on-yellow}"
+    rounded: "{rounded.none}"
+  button-small:
+    padding: "0 0.75rem"
+    height: "2.25rem"
   input:
-    backgroundColor: "{colors.stock}"
+    backgroundColor: "{colors.paper}"
     textColor: "{colors.ink}"
-    typography: "{typography.body}"
-    rounded: "{rounded.control}"
+    rounded: "{rounded.none}"
     padding: "0 0.75rem"
     height: "2.75rem"
   masthead:
-    backgroundColor: "{colors.wall}"
-    textColor: "{colors.wall-ink}"
-  switcher-link:
-    textColor: "{colors.wall-ink-soft}"
-    typography: "{typography.label}"
-    rounded: "{rounded.control}"
-    padding: "0.5rem 0.75rem"
+    backgroundColor: "{colors.yellow}"
+    textColor: "{colors.on-yellow}"
   switcher-current:
-    textColor: "{colors.wall-ink}"
-    rounded: "{rounded.control}"
-    padding: "0.5rem 0.75rem"
-  cover:
-    backgroundColor: "{colors.stock-sunk}"
-    rounded: "{rounded.cover}"
-    width: "11rem"
-  score-scale:
-    backgroundColor: "{colors.stock-sunk}"
-    height: "0.5rem"
-  score-scale-lg:
-    height: "0.75rem"
-  breakdown-band:
-    backgroundColor: "{colors.stock-sunk}"
-    textColor: "{colors.ink}"
-    padding: "3rem 0"
+    backgroundColor: "{colors.on-yellow}"
+    textColor: "{colors.yellow}"
+    height: "2.75rem"
+  count-badge:
+    backgroundColor: "{colors.red}"
+    textColor: "{colors.on-red}"
+    padding: "0.25rem 0.75rem"
+  section-bar:
+    backgroundColor: "{colors.yellow}"
+    textColor: "{colors.on-yellow}"
+    typography: "{typography.title}"
+    padding: "0.25rem 1rem"
+  bar:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.yellow}"
+    typography: "{typography.label}"
+  bar-dark:
+    backgroundColor: "{colors.yellow}"
+    textColor: "{colors.on-yellow}"
+    typography: "{typography.label}"
+  stamp-s5:
+    backgroundColor: "{colors.s5}"
+    textColor: "{colors.s5-ink}"
+    rounded: "{rounded.circle}"
+    size: "6rem"
+  stamp-s4:
+    backgroundColor: "{colors.s4}"
+    textColor: "{colors.s4-ink}"
+    rounded: "{rounded.circle}"
+    size: "6rem"
+  stamp-s3:
+    backgroundColor: "{colors.s3}"
+    textColor: "{colors.s3-ink}"
+    rounded: "{rounded.circle}"
+    size: "6rem"
+  stamp-s2:
+    backgroundColor: "{colors.s2}"
+    textColor: "{colors.s2-ink}"
+    rounded: "{rounded.circle}"
+    size: "6rem"
+  stamp-s1:
+    backgroundColor: "{colors.s1}"
+    textColor: "{colors.s1-ink}"
+    rounded: "{rounded.circle}"
+    size: "6rem"
+  stamp-large:
+    rounded: "{rounded.circle}"
+    size: "10rem"
+  stamp-unscored:
+    textColor: "{colors.ink-soft}"
+    rounded: "{rounded.circle}"
+    size: "4rem"
   message-success:
     backgroundColor: "{colors.success-tint}"
-    rounded: "{rounded.control}"
+    textColor: "{colors.ink}"
     padding: "0.75rem 1rem"
   message-error:
     backgroundColor: "{colors.danger-tint}"
-    rounded: "{rounded.control}"
+    textColor: "{colors.ink}"
     padding: "0.75rem 1rem"
   message-warning:
-    backgroundColor: "{colors.caution-tint}"
-    rounded: "{rounded.control}"
+    backgroundColor: "{colors.yellow-tint}"
+    textColor: "{colors.ink}"
     padding: "0.75rem 1rem"
 ---
 
@@ -234,163 +208,161 @@ components:
 
 ## Overview
 
-**Creative North Star: "The Exhibition Catalogue"**
+**Creative North Star: "Cross Review Weekly"**
 
-The Catalog is hung like a small exhibition: a Prussian-ink wall frames each page, and the reading happens on pale label stock below it. Each Game is a numbered plate with a wall label beside its cover, and the Score Breakdown is the catalogue's scholarly apparatus, ruled like a ledger so a reader can check the sum. The site's one job is to make a single number trustworthy, so the system spends its expression on the plate numeral, the Score numeral and the pull toward 70, and stays plain everywhere else.
+The Catalog is this week's chart page of a Japanese weekly game magazine. A newsprint-yellow masthead carries a huge skewed wordmark; below it, on a white reading column, every Game is a row boxed in heavy black rules: rank, cover, name and meta, a cross-review box printing each External Rating raw and adjusted toward 70, and the Score stamped in a circle filled with its step of a heat scale. The Game page opens the same box at full size: the facts in a ruled grid, then the Score Breakdown, where each rating's pull toward 70 is drawn and the sum is worked out and stamped.
 
-Density is low and deliberate: one plate per row, generous vertical rhythm (2rem between plate rules), hairline dividers instead of boxes. Two faces split the work cleanly: Archivo, wide and heavy, is the wall vinyl (wordmark, plate numbers, headings, Score numerals, every control and label); Source Serif 4 is the printed label text and prose. In dark mode the whole page hangs on the wall: the reading ground becomes a deep Prussian, not a neutral grey.
+The world is loud on purpose and spends its loudness in three places only: yellow (masthead and section titles), skewed Dela Gothic One (wordmark, ranks, Score numerals, section titles), and the heat circles. Everything else is plain Zen Kaku Gothic New on paper, held in place by 3px black rules. There are no shadows, no rounded cards and no gradients. In the dark theme the page turns to near-black and the rules turn to near-white, but the yellow masthead, the yellow section bars and the heat scale stay exactly as printed; only the black title bars invert to yellow.
 
-The admin (`/admin`) is an Operate surface in the same world: same tokens and masthead colour, but Archivo carries all of its text and the expressive scale is turned down to a compact h1 and ruled sections.
+The admin (`/admin`) is the same world at Operate volume: the compact yellow masthead, the same rules, bars, buttons and tables, with expression turned down to a small Dela h1 and ruled sections titled in heavy Zen Kaku.
 
 **Key Characteristics:**
-- Prussian-ink wall plus label-stock reading ground; every non-Score hue sits in the wall's blue family (hue 244–256).
-- A five-step Score scale from clay to deep green, always printed as a number beside its colour.
-- Archivo with its width axis (112–125%) for anything that names or counts; Source Serif 4 for anything that is read.
-- Hairline rules, tabular figures, no nested containers.
-- Unscored is shown as absence (a dash and a dashed empty scale), never as zero.
+- Newsprint yellow masthead and section bars; white (or near-black) reading column.
+- Every element boxed or separated by 3px rules; 8px heavy rules mark the masthead base and the Breakdown.
+- Skewed (-8deg) Dela Gothic One for the wordmark, ranks, stamp numerals and section bars.
+- Scores stamped in heat circles, red hot to blue cold, always with the numeral printed.
+- Black title bars with yellow text, inverting to yellow with black text in the dark theme.
+- Square corners everywhere except circles; flat, no shadows.
 
 ## Colors
 
-A committed two-material palette: one ink wall, one paper stock, a family of blue inks for links and the pull, and an earthy five-step Score scale. All values are OKLCH and are the normative source in `app/globals.css`; every role has a light and a dark value (keys suffixed `-dark` apply under `prefers-color-scheme: dark`).
+A two-spot-colour print palette (yellow and red) over paper and ink, plus a five-step heat scale reserved for Scores.
 
 ### Primary
-- **Prussian Wall** (`wall`): the masthead band, the primary button, text selection, and the 4px top edge of the Score Breakdown band. In dark mode it shifts slightly greener and brighter (`wall-dark`) so it still reads as a band above the darker stock.
-- **Wall Deep** (`wall-deep`): the masthead's bottom edge and the primary button's hover.
-- **Wall Ink / Wall Ink Soft** (`wall-ink`, `wall-ink-soft`): text on the wall. Soft carries the dek, the inactive switcher link and the wordmark's sub-line. In dark mode the primary button inverts to wall-ink ground with wall-coloured text.
+- **Newsprint Yellow** (yellow): the masthead band, the skewed section bars ("Ranking", "Score Breakdown"), the selection highlight and the caution button. It stays yellow in both themes, and text on it is always On-Yellow Ink.
+- **On-Yellow Ink** (on-yellow) and **On-Yellow Soft** (on-yellow-soft): the wordmark, switcher and rules on yellow; the soft brown-black carries the masthead dek only.
 
 ### Secondary
-- **Pull Blue** (`pull`): the adjusted rating only: the Adjusted column header and values, the filled dot and travel segment in each pull figure, and the key swatch. It is the colour of the Confidence Adjustment and nothing else.
-- **Link Blue** (`link`): inline links in reading text, underlined at 1px, thickening to 2px on hover.
-- **Focus Blue** (`focus`): the 2px focus outline (3px offset), the focused input border, and the caret.
+- **Spot Red** (red, red-dark): the count badge, every hover state (links, ranking names, primary buttons), the drawn raw-to-adjusted arrows, the adjusted dot and pull segment, input focus outlines and the text caret. Text on red is On-Red (white in light, near-black in dark).
 
-### Tertiary: the Score scale
-Five steps keyed to the shown (rounded) Score: `s1` below 50 (clay red), `s2` 50–69 (burnt ochre), `s3` 70–79 (olive), `s4` 80–89 (leaf green), `s5` 90 and above (deep green). The step colour fills the Score numeral and the meter fill, and the rounded total in the Breakdown. Dark-mode steps are lifted in lightness (0.70–0.83) to hold contrast on the Prussian stock.
+### Heat Scale
+Five fills, each paired with a fixed numeral ink, identical in both themes. Red is hot (best), blue is cold.
+- **Hot Red** (s5, white numeral): 90 and above.
+- **Orange** (s4, black numeral): 80–89.
+- **Yellow** (s3, black numeral): 70–79.
+- **Sky** (s2, black numeral): 50–69.
+- **Cold Blue** (s1, white numeral): under 50.
+
+The step is chosen from the shown (rounded) Score, so a 79.6 printed as 80 sits on Orange.
 
 ### Neutral
-- **Label Stock** (`stock`): the page ground, input fields and the single-rating note inside the Breakdown.
-- **Sunk Stock** (`stock-sunk`): the Breakdown band, the empty part of each Score scale, cover placeholders, and secondary button hover.
-- **Ink / Ink Soft** (`ink`, `ink-soft`): text, and the 2px rule under the filter bar and above admin sections. Ink also draws the 70 baseline tick. Ink Soft carries plate numerals, meta lines, fact terms and table headers, and the Unscored label.
-- **Rule / Rule Strong** (`rule`, `rule-strong`): hairline plate dividers and table rows; Rule Strong for input borders, dashed Unscored and placeholder outlines, and the pull-figure track.
+- **Paper** (paper, paper-dark): the page ground and the inside of every box.
+- **Sunk Paper** (paper-sunk, paper-sunk-dark): row and table-row hover, the Breakdown's sum box, cover placeholders.
+- **Ink** (ink, ink-dark): text, the 3px rules, the focus outline, the title bars in light.
+- **Soft Ink** (ink-soft, ink-soft-dark): meta, notes, raw ratings, field and fact labels, Unscored stamps and dashed placeholders.
+- **Soft Rule** (rule-soft, rule-soft-dark): the only 1px line, used inside a box (review sub-rows, table rows), never to box anything.
 
 ### Admin states
-- **Danger, Caution, Success** with matching `-tint` grounds: admin messages and the Remove and Sync-all buttons only. Danger shares the clay hue of `s1`.
+- **Success Tint**, **Danger** with **Danger Tint**, and **Yellow Tint** back the Done, Problem and Check messages. Danger also draws the Remove button.
 
 ### Named Rules
-**The One Wall Rule.** Outside the Score scale and the admin states, every colour is a lightness or chroma step of the wall's blue (hue 244–256). A new surface adds no new hue.
+**The Two Spot Colours Rule.** Yellow and red are the only accents outside the heat scale. Yellow is for owning a band or a title; red is for counts, hover and the pull. Neither is used for decoration.
 
-**The Printed Number Rule.** Colour is never the only signal. Every Score colour sits beside the printed numeral; every message state prints its word ("Done", "Problem", "Check") before the text.
+**The Fixed Heat Rule.** A heat fill and its numeral ink never change with theme, and a heat colour never appears except as a Score step (the yellow masthead and the s3 step share a value, but s3 is only ever a circle).
 
-**The Absence Rule.** Unscored has no colour: an Ink Soft word, a dashed Rule Strong scale with no fill, and a dash where a plate number would be. Never a zero, never a grey bar.
+**The Printed Numeral Rule.** Colour is never the only signal: every stamp prints its Score, every admin message prints its state word, and the heat key prints its ranges.
 
 ## Typography
 
-**Display Font:** Archivo, variable width axis (with Helvetica Neue, Arial, sans-serif)
-**Body Font:** Source Serif 4, optical-size axis (with Georgia, serif)
+**Display Font:** Dela Gothic One (with Arial Black)
+**Body Font:** Zen Kaku Gothic New (with Hiragino Sans, Helvetica Neue, Arial)
 
-**Character:** Archivo stretched wide and set heavy reads like vinyl lettering on a gallery wall; Source Serif 4 at optical size reads like the printed label beneath it. Width is a role signal: 125% for the wordmark and plate numbers, 112% for headings and Score numerals, 100% for titles and UI.
+**Character:** Dela Gothic One is the magazine's poster lettering, always regular weight, usually skewed -8deg and uppercase for titles; Zen Kaku Gothic New does all reading and every control, and goes to 900 weight for labels and bars. Numbers are tabular site-wide.
 
 ### Hierarchy
-- **Display** (800, wdth 125, `--text-display` clamp 2.75–5.5rem, 0.95): the wordmark in the full masthead, ranking page only. Compact masthead drops it to `--text-lg` (`--text-md` under 30rem).
-- **Score Numeral** (800, wdth 112, 2.75rem; large 4.5–6rem clamp on the Game page, 0.9, tabular): the Score in its step colour. Phones set the ranking numeral at 2rem.
-- **Plate Numeral** (800, wdth 125, `--text-2xl`, 1, tabular, Ink Soft): the CSS counter on each ranked plate; 1.75rem on narrow screens.
-- **Headline** (800, wdth 112, `--text-2xl` clamp 2–3.25rem, 1.05, -0.03em): the Game page h1 and not-found h1. Titles over 40 characters step down to `--text-xl`.
-- **Section Title** (800, wdth 112, 1.75rem, -0.02em): the Score Breakdown heading; the admin h1 uses the same treatment.
-- **Title** (700, 1.75rem, -0.01em): Game names on ranked plates; 1.3125rem on narrow screens.
-- **Dek** (Source Serif 4, 1.3125rem, 1.25, max 34ch): the site description on the wall.
-- **Body** (Source Serif 4, 1.0625rem, 1.55, max 66ch): wall labels (max 46ch), descriptions, Breakdown intro (max 60ch).
-- **Label** (Archivo 600, 0.9375rem): field labels, fact terms, table headers, the small "Score" heading over the Game page meter.
-- **Meta** (Archivo 400, 0.9375rem, tabular): year and Platforms, last-synced line, filter actions.
-- **Caption** (Archivo 700, 0.8125rem): the "70" tick label and pull-figure axis ends.
+- **Display** (Dela 400, clamp 2.75–6rem, line-height 0.9, -0.03em, uppercase, skewed): the wordmark on the ranking. The compact masthead uses it at 1.875rem.
+- **Headline** (Dela 400, clamp 2.25–4rem, 1.05): the Game page title, unskewed; long names step down to the title size. Not-found headings use it uppercase and skewed.
+- **Title** (Dela 400, clamp 2–3rem, uppercase, skewed): section bars on yellow, and the rank numerals (01, 02...) on the ranking.
+- **Numeral** (Dela 400): stamp numerals at 42% of the circle, adjusted ratings in the cross-review box (1.875rem), raw and adjusted values in the Breakdown (title size), the exact Score in the sum, admin Score cells.
+- **Item** (Zen 900, 1.375rem): Game names on the ranking, admin section titles.
+- **Body** (Zen 400, 1.0625rem, line-height 1.7; 1.8 for the description, max 66ch).
+- **Meta** (Zen 400–700, 0.9375rem, 1.5): meta lines, notes, raw ratings.
+- **Label** (Zen 900, 0.8125rem, 0.04–0.08em, uppercase): field labels, fact and review terms, bar text, table headers, the back link.
 
 ### Named Rules
-**The Two Voices Rule.** Archivo for anything that names, counts or controls; Source Serif 4 for anything that is read as a sentence. The admin is the exception that proves it: it is all controls, so it is all Archivo.
+**The Skew Rule.** Skew (skewX -8deg) belongs to Dela Gothic One on the wordmark, ranks, stamp numerals, section bars and the count badge. Reading text, controls and the Game page title are never skewed.
 
-**The Tabular Rule.** Every numeral that can line up with another (plate numbers, Scores, ratings, counts, dates in meta) uses tabular figures.
-
-**The Never Shrink Rule.** Narrow screens drop columns and decoration, never the reading size: body stays at 1.0625rem; only display-scale numerals and titles step down.
+**The Steady Body Rule.** Body text stays 1.0625rem on phones; only display, rank, names and meta step down.
 
 ## Layout
 
-A single centred column: `--page` 66rem max width with a fluid `--gutter` (1–2.5rem). The masthead and the Score Breakdown band run full-bleed; their inner content snaps back to the same 66rem column. Spacing follows an eight-step scale (0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4.5rem); plates are separated by 2rem padding and a hairline, sections by 3–4.5rem.
+A single centred page (max 80rem) with a fluid gutter (1rem to 4rem). Desktop ranking rows are a five-column grid: rank (5rem), cover (6rem), name and meta, cross-review box (up to 25rem), stamp (6rem), with 1.5rem gaps and 1.5rem vertical padding between rules. The Game page hero is cover (16.5rem) beside title, facts and description, with the large stamp at the right.
 
-- **Ranked plate:** a four-column label grid (5rem rank, 11rem cover, flexible label, 11rem Score) shared by every plate. Under 52rem it becomes 2.25rem rank, 4.5rem cover, and a label column with the Score meter laid horizontally beneath the label.
-- **Filter bar:** a grid (search 2fr, Platform 1fr, Genre 1fr, actions), closed by a 2px Ink rule. Under 52rem: two columns, search and actions spanning both.
-- **Game page:** a 16.5rem cover column beside title, Score plate, facts (two-column `dl`) and description. Under 52rem: title spans, then an 8.5rem cover beside the Score plate, then facts and description full width.
-- **Breakdown table:** max 54rem; under 52rem each External Rating becomes a block of labelled pairs (labels from `data-label`) and the total row regrids to working above, Score below.
-- **Masthead:** wordmark left, switcher right. Under 30rem the full masthead stacks with the switcher above the wordmark.
-- **Admin tables:** under 40rem each row becomes a block with `data-label` prefixes, the Score pinned top right, actions on their own line.
+Spacing follows an eight-step scale from 0.25rem to 4.5rem; sections open with 3–4.5rem, rows breathe at 1.5rem, boxes pad at 0.5–1rem.
 
-Breakpoints in use: 52rem (main), 40rem (admin tables), 30rem (masthead).
+Breakpoints are 60rem (ranking drops to four columns, cross-review box moves under the name), 44rem (phones: masthead stacks badge and switcher above the wordmark; filters pair into two rows; the rank leaves its column and becomes a black-bar badge on the cover's top-left corner; the Game page puts title above cover-and-stamp; reviews stack; admin tables become labelled blocks), 24rem and 21rem (display steps down so long Spanish words fit; the facts grid goes single-column).
+
+### Named Rules
+**The Corner Badge Rule.** On phones the rank is never dropped: it moves onto the cover's corner as a bar-coloured badge.
 
 ## Elevation & Depth
 
-The page is flat and ruled; depth belongs to the works alone. Covers hang off the stock with a soft two-layer shadow and lift slightly on plate hover. Nothing else casts a shadow: controls, the Breakdown band, messages and tables separate by tone (Sunk Stock) and rules.
-
-### Shadow Vocabulary
-- **Hang** (`--shadow-hang`: `0 1px 1px oklch(0.2 0.04 255 / 0.12), 0 8px 20px -8px oklch(0.2 0.04 255 / 0.35)`; dark: black at 0.3 and 0.6): every cover at rest.
-- **Lift** (`--shadow-lift`: `0 2px 2px oklch(0.2 0.04 255 / 0.12), 0 16px 30px -10px oklch(0.2 0.04 255 / 0.4)`; dark: black at 0.3 and 0.7): a cover on its plate's hover, with a 2px upward translate.
+Flat. There are no shadows anywhere; depth is conveyed by rules (3px boxes, 8px heavy rules), by the black or yellow title bars that cap a box, and by Sunk Paper under hovered rows and the sum box.
 
 ### Named Rules
-**The Only The Works Hang Rule.** Shadows are for covers. Placeholder covers, which are not works, drop the shadow and take a dashed outline.
+**The Ruled Box Rule.** Every element sits inside 3px rules. A heavy 8px rule marks the base of the ranking masthead and the top of the Score Breakdown (6px under the compact masthead). 1px Soft Rules exist only inside a box.
 
 ## Shapes
 
-Nearly square. Controls, the switcher and messages use a 3px corner (`--radius-control`); covers a 2px corner (`--radius-cover`); the Score scale, the Breakdown band and tables are square. The only round forms are the pull figure's 0.875rem dots (ring for the raw rating, filled Pull Blue for the adjusted). Lines carry the structure: 1px hairlines between plates and rows, 2px Ink rules to close a filter bar or open an admin section, a 4px wall edge on the Breakdown band, a 3px double Ink rule above the Breakdown total (the ledger sum line), and 1px dashed Rule Strong for anything absent (Unscored scale, missing cover, empty result).
+Two shapes only: the square (radius 0 on every box, button, input, bar and cover) and the circle (stamps, heat-key dots, the raw ring and adjusted dot in the pull figure). Section bars and the count badge are skewed parallelograms. Placeholders and Unscored use dashed strokes in Soft Ink; drawn arrows are a single SVG mask filled with red.
 
 ## Components
 
 ### Buttons
-Plain, square-shouldered and labelled in Archivo; colour only signals consequence.
-- **Shape:** 3px corners, 2.75rem min height (2.25rem small), 1px border.
-- **Primary:** wall ground, wall-ink text, 0 1.5rem padding, Archivo 650 at 0.9375rem; hover goes to Wall Deep. Dark mode inverts to a wall-ink ground with wall text.
-- **Secondary:** transparent with Ink text and a Rule Strong border; hover fills Sunk Stock.
-- **Danger / Caution:** transparent, text and border in Danger or Caution; hover fills the matching tint. Used for Remove and Sync all.
-- **Quiet:** transparent on the wall with a Wall Ink Soft border; the admin's sign-out inside the masthead.
-- **Transitions:** background, border and colour over 160ms on the ease-out curve; removed under reduced motion.
+- **Shape:** square (0), min-height 2.75rem (2.25rem small), 3px border in the button's own colour.
+- **Primary:** the bar colours, black with yellow text in light, yellow with black text in dark; Zen 900 at 0.9375rem, 0.04em tracking.
+- **Hover:** fills Spot Red with On-Red text (140ms, ease-out). Secondary inverts paper and ink; Danger fills Danger; Caution and Quiet fill On-Yellow Ink with yellow text.
+- **Variants:** Secondary (paper, ink border), Danger (paper, danger text and border; Remove), Caution (yellow; Sync all), Quiet (transparent on the masthead; Log out).
+- **Focus:** 3px ink outline offset 3px; on the masthead the outline is On-Yellow Ink.
 
 ### Inputs / Fields
-- **Style:** Label Stock ground, 1px Rule Strong border, 3px corners, 2.75rem min height, body-size text. Selects draw their own chevron from two gradient triangles in Ink Soft.
-- **Label:** Archivo 600 at 0.9375rem, stacked 0.25rem above the field.
-- **Hover / Focus:** border goes to Ink Soft on hover; focus adds the 2px Focus Blue outline at 1px offset and a Focus Blue border.
+- **Style:** 3px ink border, paper ground, square, 2.75rem tall, body size. Selects carry a drawn two-triangle chevron.
+- **Label:** Label style above the control.
+- **Focus:** the outline turns Spot Red and sits flush (offset 0).
 
 ### Navigation
-- **Masthead:** full-bleed wall band. Full version (ranking page) carries the display wordmark as h1 and the dek; compact version (every other page) a 1.3125rem wordmark link.
-- **Switcher:** Archivo at 0.9375rem; inactive locale in Wall Ink Soft with a transparent border that appears on hover; current locale in Wall Ink, 600 weight, with a 1px Wall Ink border. Focus outlines inside the masthead turn Wall Ink.
-- **Back link:** an inline drawn SVG arrow (1.75 stroke) plus "Ranking" in meta type.
+- **Masthead:** full-width yellow band. Ranking version: display wordmark, dek, switcher top-right, red count badge bottom-right, 8px base rule. Compact version (every other page and admin): 1.875rem wordmark, 6px base rule.
+- **Language switcher:** a 3px-ruled two-cell control on yellow; the current language is inverted (On-Yellow Ink with yellow text), the other hovers to Yellow Tint.
+- **Back link:** Label style with a drawn left arrow, 2.75rem target.
 
-### Ranked Plate (signature)
-The repeating unit of the ranking. A counter-numbered plate number in Ink Soft, the cover hung at 11rem, the title and wall label, and the Score meter on the right edge. The whole plate is the link target (the title link stretches over it); hover underlines the title and lifts the cover; keyboard focus outlines the whole plate at 4px offset. Unscored plates take no number, only a 1.5rem dash.
+### Score Stamp (signature)
+A circle with a 3px ink ring (4px at large) filled with its heat step and the rounded Score in skewed Dela at 42% of the diameter. Sizes: 6rem on the ranking (5.5rem below 60rem, 4.75rem on phones), 10rem on the Game page (8.5rem on phones), and the same small stamp closes the Breakdown's sum. The Game page stamp is headed by a small "Score" bar.
+- **Unscored, small:** a dashed Soft Ink ring around an em dash, with the word "Unscored" captioned beneath, so a translation never crosses the ring. The rank column shows a dash, and the row takes no rank number.
+- **Unscored, large:** the dashed ring with the word inside.
 
-### Score Meter (signature)
-The Score as numeral plus a 0–100 scale. The numeral and the fill take the step colour; the scale is a 0.5rem Sunk Stock track (0.75rem on the Game page) with a 1px inset Rule edge, crossed by a 2px Ink tick at 70. The tick is labelled "70" once per screen: on the first ranked plate and on the Game page. Unscored swaps the numeral for an Ink Soft word and the track for a dashed empty outline.
+### Cross-Review Box (signature)
+A 3px-ruled two-column box, one column per External Rating (Critic, Users). Each column is capped by a bar (label, review count right-aligned) and prints the raw rating in Soft Ink, a red drawn arrow, then the adjusted value in Dela. A missing rating prints a dash. Both columns share a subgrid header row so their numbers stay level.
 
-### Score Breakdown (signature)
-A full-bleed Sunk Stock band with a 4px wall top edge. Inside, a ledger table in Archivo with tabular figures: a 2px Ink rule under the header, a hairline after each rating, and a 3px double Ink rule above the total. Each External Rating has a pull figure beneath it: an axis zoomed to the data, the 70 baseline as an Ink tick, the raw rating as an Ink ring (value above), the adjusted rating as a Pull Blue dot (value below) joined by a 4px Pull Blue segment. With motion allowed, the dot travels from raw to adjusted and the segment grows over 900ms after a 250ms delay.
+### Heat Key
+A row of 1rem circles (2px ink ring, step fill) each followed by its printed range: 90+, 80–89, 70–79, 50–69, <50.
 
-### Covers
-Exact Source proportions (264 / 374), 2px corners, Hang shadow. A missing cover becomes a Sunk Stock frame with a dashed Rule Strong border and the Game's initial in heavy wide Archivo, never a stand-in image.
+### Score Breakdown
+Opens under an 8px rule with a yellow skewed section bar, an intro at 66ch and a key (ring = Rating, red dot = Adjusted, tick = 70). Below, a ruled grid of review boxes, each capped by a bar: raw and adjusted in large Dela, reviews and share of Score under a Soft Rule, then the pull figure. The figure carries marks only: the axis, the raw ring, the red adjusted dot and segment, the 70 tick, and small axis-end and 70 labels; the rating values themselves are printed in the box above, never on the figure, so nothing collides. With motion allowed, the dot slides from raw to adjusted and the segment grows over 900ms. The sum box (Sunk Paper, joined to the grid) prints the working and stamps the Score.
+
+### Facts Grid
+A 3px-ruled two-by-two grid of Label terms over 700-weight values (one column below 21rem).
 
 ### Messages (admin)
-3px corners, 1px border and tint ground in the state colour, Archivo at 0.9375rem, max 66ch. A printed state word ("Done", "Problem", "Check") in bold state colour leads every message.
+A 3px-ruled block whose state word is printed in a bar before the text: **Done** on Success Tint, **Problem** (Danger bar, Danger border) on Danger Tint, **Check** on Yellow Tint.
 
-### Data Tables (admin)
-Archivo at 0.9375rem, hairline row rules, Ink Soft header text over a Rule Strong line, tabular numerals, the Score in 800 weight Ink (not step-coloured). Row actions stay in one table cell.
+### Data Table (admin)
+3px-ruled, bar-coloured header row in Label style, 1px Soft Rule between rows, Sunk Paper on hover, Score cells in Dela. On phones each row becomes a block with its column labels printed inline.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** take every colour from the tokens in `app/globals.css`, and give each new role a light and a dark value.
-- **Do** print the number next to any Score colour, and print the state word next to any status colour.
-- **Do** use Archivo with its width axis for names, numerals and controls, and Source Serif 4 for sentences.
-- **Do** separate plates, rows and sections with rules (1px hairline, 2px Ink, 3px double for a sum) rather than boxes.
-- **Do** show absence with a dashed Rule Strong outline and an honest word: Unscored, no cover, no results.
-- **Do** keep reading text at 1.0625rem on every screen width; drop columns instead.
-- **Do** keep motion to the 160ms ease-out state fades, the cover lift, and the pull animation, all off under reduced motion.
+- **Do** box every element in 3px ink rules and use the 8px heavy rule only under the ranking masthead and above the Score Breakdown.
+- **Do** print the numeral in every Score stamp and choose its fill from the rounded Score: s5 90+, s4 80–89, s3 70–79, s2 50–69, s1 under 50.
+- **Do** keep the heat fills, their numeral inks, the masthead yellow and text-on-yellow identical in both themes; invert only the bars (black with yellow text in light, yellow with black text in dark).
+- **Do** skew (-8deg) Dela Gothic One on the wordmark, ranks, stamp numerals and section bars.
+- **Do** show Unscored as a dashed empty circle with the word, and give it no rank number.
+- **Do** print the state word (Done, Problem, Check) on every admin message.
+- **Do** keep every text pair at 4.5:1 or better in both themes (the shipped build measures 5.18:1 or better).
 
 ### Don't:
-- **Don't** add a hue outside the wall's blue family, the Score scale and the admin states.
-- **Don't** fill a tile or card with a Score colour; the colour lives in the numeral and the meter fill.
-- **Don't** show an Unscored Game as 0 or with a grey bar.
-- **Don't** put shadows on anything but covers, and don't nest bordered containers inside one another.
-- **Don't** shrink body text on narrow screens.
-- **Don't** substitute a stock or generated image for a missing cover.
+- **Don't** show an Unscored Game as zero, or let colour alone carry a Score or a state.
+- **Don't** add shadows, rounded corners, gradients or a second accent colour.
+- **Don't** print rating values on the pull figure; they belong in the box above it.
+- **Don't** use the heat colours for anything but Score steps.
+- **Don't** shrink body text on phones.
+- **Don't** skew reading text, controls or the Game page title.
