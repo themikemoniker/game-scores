@@ -2,11 +2,12 @@
 
 Ideas, not promises. When one is picked up it gets a ticket under `.scratch/<feature>/issues/`.
 
-## In progress
+## Shipped
 
 - **Quiz and Matches.** A short Quiz (where you play, which Tags you feel like, classic or
   modern) that recommends 3 Games from the Catalog and says why each one matched. Built through
   the usual process: grilled, specced (stories 49–57), tickets 09 Tags and 10 Quiz and Matches.
+- **A real Catalog.** 16 hand-picked Games; the test rows are gone.
 
 ## Now: ready to share
 
@@ -23,7 +24,6 @@ Ideas, not promises. When one is picked up it gets a ticket under `.scratch/<fea
   follows IGDB without visiting `/admin`.
 - **Analytics.** Vercel Web Analytics and Speed Insights (free on Hobby) to see which Games
   people open.
-- **Ranking screenshot in the README** now that the Catalog is real.
 - **Tag filter on the ranking**, once Tags exist.
 
 ## Later
