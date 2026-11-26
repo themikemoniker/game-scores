@@ -2,6 +2,8 @@
 
 A hand-picked Catalog of Games, ranked by the site's own Score, in English and Spanish.
 
+**Live:** https://game-scores-rho.vercel.app
+
 ![A Game page: Hades, Score 87, with its facts and the start of the Score Breakdown](docs/screenshot.png)
 
 Aggregators show a number; this site shows the working. Each External Rating from IGDB is pulled
