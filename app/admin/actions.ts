@@ -6,7 +6,8 @@ import { logIn, logOut, requireAdmin } from "../../lib/admin-auth";
 import { COLUMNS, readCatalog } from "../../lib/catalog";
 import { CATALOG_TAG } from "../../lib/catalog-cache";
 import { fetchGameRows } from "../../lib/igdb";
-import { appendGameRow, deleteGameRow, readGameRows, replaceGameRows } from "../../lib/sheet";
+import { appendGameRow, deleteGameRow, readGameRows } from "../../lib/sheet";
+import { runSync } from "../../lib/sync";
 
 export async function login(formData: FormData) {
   const ok = await logIn(String(formData.get("password") ?? ""));
@@ -29,7 +30,6 @@ export async function removeGame(formData: FormData) {
 const ID = COLUMNS.indexOf("igdb_id");
 const SLUG = COLUMNS.indexOf("slug");
 const NAME = COLUMNS.indexOf("name");
-const TAGS_COL = COLUMNS.indexOf("tags");
 
 // Imports one Game from IGDB. A taken or invalid slug sends the owner back to pick another one.
 export async function importGame(formData: FormData) {
@@ -62,31 +62,14 @@ export async function importGame(formData: FormData) {
   back({ imported: slug });
 }
 
-// Syncs one Game (form field igdbId) or, without one, every row in the Sheet. Overwrites every
-// Source column and last_synced, keeps the slug and the Tags. IDs IGDB no longer returns are left as they are
-// and reported back to the admin page.
+// Syncs one Game (form field igdbId) or, without one, every Game; see runSync.
 export async function syncGames(formData: FormData) {
   await requireAdmin();
   const one = formData.get("igdbId");
-  // Read the Sheet itself, not the cache, so a row added by hand a minute ago is synced too.
-  const rows = await readGameRows();
-  // Reversed so a duplicated IGDB ID keeps the first row's slug, the row replaceGameRows writes.
-  const slugs = new Map(rows.map((r) => [Number(r[ID]?.trim()), r[SLUG]?.trim() ?? ""] as const).reverse());
-  const tags = new Map(rows.map((r) => [Number(r[ID]?.trim()), r[TAGS_COL] ?? ""] as const).reverse());
-  const ids = (one ? [Number(one)] : [...slugs.keys()]).filter(
-    (id) => Number.isInteger(id) && id > 0 && slugs.has(id),
-  );
-
-  const fetched = await fetchGameRows(ids);
-  for (const [id, row] of fetched) {
-    row[SLUG] = slugs.get(id) || row[SLUG];
-    row[TAGS_COL] = tags.get(id) ?? "";
-  }
-  await replaceGameRows(fetched);
+  const { synced, missing } = await runSync(one ? Number(one) : undefined);
   updateTag(CATALOG_TAG);
 
-  const params = new URLSearchParams({ synced: String(fetched.size) });
-  const missing = ids.filter((id) => !fetched.has(id));
+  const params = new URLSearchParams({ synced: String(synced) });
   if (missing.length) params.set("missing", missing.join(","));
   redirect(`/admin?${params}`);
 }

@@ -4,6 +4,8 @@ Ideas, not promises. When one is picked up it gets a ticket under `.scratch/<fea
 
 ## Shipped
 
+- **Fresh ratings.** A Vercel Cron runs Sync all every morning, so the Score follows IGDB
+  without visiting `/admin` (ticket 13).
 - **Link previews.** Each Game page unfurls with its cover, name and Score stamp; the ranking
   and the Quiz with the wordmark and the site description, in English or Spanish (ticket 12).
 - **CI.** A GitHub Action runs `npm run typecheck`, `npm test` and `npm run build` on every PR
@@ -21,8 +23,6 @@ Ideas, not promises. When one is picked up it gets a ticket under `.scratch/<fea
 
 ## Next
 
-- **Fresh ratings.** A daily Vercel Cron (allowed on Hobby) that runs Sync all, so the Score
-  follows IGDB without visiting `/admin`.
 - **Analytics.** Vercel Web Analytics and Speed Insights (free on Hobby) to see which Games
   people open.
 - **Tag filter on the ranking**, once Tags exist.

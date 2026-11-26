@@ -52,6 +52,7 @@ Put these in `.env.local` locally and in the Vercel project settings for deploys
 | `IGDB_CLIENT_ID` | Client ID of a Twitch app (dev.twitch.tv/console/apps, OAuth redirect `https://localhost`; Twitch rejects plain http). Used only on the server. |
 | `IGDB_CLIENT_SECRET` | That Twitch app's client secret. The server trades both for an IGDB app access token and caches it until it expires. |
 | `ADMIN_PASSWORD` | The password for `/admin`. It also signs the 30-day session cookie, so changing it logs everyone out. |
+| `CRON_SECRET` | A long random string (`openssl rand -hex 32`). Vercel Cron sends it to `/api/cron/sync`, which runs Sync all once a day; any other caller gets 401. Production only. |
 
 ## The Sheet
 
@@ -77,8 +78,8 @@ The site reads the Sheet at most every 10 minutes (cache tag `catalog`), so hand
 ## Deploy
 
 Vercel's free Hobby plan. Import the repo in Vercel (framework preset: Next.js, production branch
-`main`), add the six environment variables, deploy. Every push to `main` deploys; other branches
-get preview URLs. The admin page is at `/admin`.
+`main`), add the seven environment variables, deploy. Every push to `main` deploys; other branches
+get preview URLs. The admin page is at `/admin`. Sync all also runs every morning at about 06:00 UTC (`vercel.json`), so a hand edit to a Source column in the Sheet lasts until then; the slug and the Tags are kept.
 
 GitHub Pages can't host this: it serves static files only, and the site needs a server for the
 Sheet credentials, IGDB, the admin actions and the locale redirect.
