@@ -567,6 +567,18 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
+.quiz-results {
+  scroll-margin-block-start: var(--space-4);
+}
+
+/* Forced colours drop the fill, so the picked answers get a system-coloured outline instead. */
+@media (forced-colors: active) {
+  .choice:has(input:checked) {
+    border-style: double;
+    outline: var(--line) solid Highlight;
+  }
+}
+
 .quiz-actions {
   display: flex;
   flex-wrap: wrap;
@@ -599,6 +611,14 @@ select:focus-visible {
   font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+.tag-problems {
+  display: grid;
+  gap: var(--space-1);
+  padding: 0;
+  list-style: none;
+  font-weight: 700;
 }
 
 /* ---------- Ranking: head and heat key ---------- */

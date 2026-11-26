@@ -44,7 +44,7 @@ export default async function QuizPage({ params, searchParams }: Props) {
           <p className="ranking-note">{t.quizIntro}</p>
         </div>
 
-        <form className="quiz-form">
+        <form className="quiz-form" action={`/${lang}/quiz#matches`}>
           <fieldset>
             <legend>
               {t.quizPlatforms} <span>{t.quizPlatformsHint}</span>
@@ -96,7 +96,7 @@ export default async function QuizPage({ params, searchParams }: Props) {
           </p>
         )}
         {result && (
-          <section aria-labelledby="matches-heading" className="quiz-results">
+          <section id="matches" aria-labelledby="matches-heading" className="quiz-results">
             <h2 id="matches-heading" className="results-heading">
               {t.quizMatches}
             </h2>
@@ -115,7 +115,7 @@ export default async function QuizPage({ params, searchParams }: Props) {
                       <Link href={`/${lang}/games/${game.slug}`}>{game.name}</Link>
                     </h3>
                     <p className="why">
-                      <span>{t.quizWhy}</span>{" "}
+                      {!result.fallback && <span>{t.quizWhy}</span>}{" "}
                       {[
                         families.map((f) => t.familyNames[f]).join(", "),
                         tags.map((tag) => t.tagNames[tag]).join(" + "),
