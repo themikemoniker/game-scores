@@ -22,6 +22,9 @@ export function pickLocale(acceptLanguage: string | null): Locale {
   return prefs.map((p) => p.lang).find(hasLocale) ?? "en";
 }
 
+import type { Tag } from "./catalog";
+import type { Era, Family } from "./quiz";
+
 type RatingKind = "critic" | "user";
 
 const en = {
@@ -76,6 +79,40 @@ const en = {
   notFound: "Page not found",
   notFoundExplain: "There's no page at this address.",
   genreNames: {} as Record<string, string>,
+  tagsLabel: "Tags",
+  tagNames: {
+    roguelike: "Roguelike",
+    metroidvania: "Metroidvania",
+    "2d-platformer": "2D platformer",
+    "3d-platformer": "3D platformer",
+    "open-world": "Open world",
+    cozy: "Cozy",
+    "story-rich": "Story-rich",
+    deckbuilder: "Deckbuilder",
+    shooter: "Shooter",
+    puzzle: "Puzzle",
+  } as Record<Tag, string>,
+  quizLink: "Find my next Game",
+  quizTitle: "Find your next Game",
+  quizIntro: "Three questions. The Catalog answers with up to 3 Matches, and says why each one matched.",
+  quizPlatforms: "Where do you play?",
+  quizPlatformsHint: "Pick any. None means all of them.",
+  quizTags: "What do you feel like?",
+  quizTagsHint: "Pick up to 3.",
+  quizEra: "New or classic?",
+  familyNames: { pc: "PC", playstation: "PlayStation", xbox: "Xbox", nintendo: "Nintendo", mobile: "Mobile" } as Record<
+    Family,
+    string
+  >,
+  eraNames: { any: "Either", modern: "Modern (2010 and later)", classic: "Classic (before 2010)" } as Record<Era, string>,
+  quizSubmit: "Show my Matches",
+  quizPickTag: "Pick at least one Tag to see your Matches.",
+  quizTooManyTags: "Only your first 3 Tags count.",
+  quizMatches: "Your Matches",
+  quizFallback: "No Game fits all of that. These are the best-scored Games on your Platforms instead.",
+  quizNothing: "No Game in the Catalog is on those Platforms yet.",
+  quizWhy: "Why this match",
+  quizStartOver: "Start over",
 };
 
 type Dictionary = typeof en;
@@ -149,6 +186,37 @@ const es: Dictionary = {
     "Turn-based strategy (TBS)": "Estrategia por turnos (TBS)",
     "Visual Novel": "Novela visual",
   },
+  tagsLabel: "Etiquetas",
+  tagNames: {
+    roguelike: "Roguelike",
+    metroidvania: "Metroidvania",
+    "2d-platformer": "Plataformas 2D",
+    "3d-platformer": "Plataformas 3D",
+    "open-world": "Mundo abierto",
+    cozy: "Relajado",
+    "story-rich": "Gran historia",
+    deckbuilder: "Construcción de mazos",
+    shooter: "Disparos",
+    puzzle: "Puzle",
+  },
+  quizLink: "Encuentra tu próximo Juego",
+  quizTitle: "Encuentra tu próximo Juego",
+  quizIntro: "Tres preguntas. El Catálogo responde con hasta 3 Coincidencias y explica por qué encaja cada una.",
+  quizPlatforms: "¿Dónde juegas?",
+  quizPlatformsHint: "Elige las que quieras. Ninguna significa todas.",
+  quizTags: "¿Qué te apetece?",
+  quizTagsHint: "Elige hasta 3.",
+  quizEra: "¿Nuevo o clásico?",
+  familyNames: { pc: "PC", playstation: "PlayStation", xbox: "Xbox", nintendo: "Nintendo", mobile: "Móvil" },
+  eraNames: { any: "Me da igual", modern: "Moderno (2010 en adelante)", classic: "Clásico (antes de 2010)" },
+  quizSubmit: "Ver mis Coincidencias",
+  quizPickTag: "Elige al menos una Etiqueta para ver tus Coincidencias.",
+  quizTooManyTags: "Solo cuentan tus 3 primeras Etiquetas.",
+  quizMatches: "Tus Coincidencias",
+  quizFallback: "Ningún Juego encaja con todo eso. Estos son los Juegos mejor puntuados en tus Plataformas.",
+  quizNothing: "Aún no hay ningún Juego del Catálogo en esas Plataformas.",
+  quizWhy: "Por qué encaja",
+  quizStartOver: "Empezar de nuevo",
 };
 
 export const dictionary = (lang: Locale) => ({ en, es })[lang];

@@ -93,6 +93,7 @@ function toRow(g: IgdbGame): string[] {
     user_rating: num(g.rating),
     user_count: num(g.rating_count),
     last_synced: new Date().toISOString(),
+    tags: "", // The owner's, never the Source's: Sync puts the existing Tags back.
   };
   return COLUMNS.map((col) => cells[col]);
 }

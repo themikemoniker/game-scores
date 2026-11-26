@@ -49,7 +49,8 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
     );
   }
 
-  const { games, invalidRows } = await getCatalog();
+  const { games, invalidRows, unknownTags } = await getCatalog();
+  const untagged = games.filter((g) => g.tags.length === 0);
   const inCatalog = new Set(games.map((g) => g.igdbId));
   let candidates: Candidate[] = [];
   let searchError: string | null = null;
@@ -173,6 +174,32 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
                   </tbody>
                 </table>
               </div>
+            </>
+          )}
+        </section>
+
+        <section className="admin-section" aria-labelledby="tags-heading">
+          <h2 id="tags-heading">
+            Tags to fix <span className="count">({untagged.length + unknownTags.length})</span>
+          </h2>
+          {untagged.length + unknownTags.length === 0 ? (
+            <p className="quiet-text">None. Every Game has Tags the Quiz knows.</p>
+          ) : (
+            <>
+              <p className="message warning">
+                These Games stay on the site, but the Quiz can&apos;t match them on these Tags. Fix the{" "}
+                <code>tags</code> column in the Sheet.
+              </p>
+              <ul className="tag-problems">
+                {untagged.map((g) => (
+                  <li key={g.igdbId}>{g.name}: no Tags</li>
+                ))}
+                {unknownTags.map((r) => (
+                  <li key={`${r.row}-${r.reason}`}>
+                    Row {r.row}: {r.reason}
+                  </li>
+                ))}
+              </ul>
             </>
           )}
         </section>

@@ -23,7 +23,7 @@ const base = () => `https://sheets.googleapis.com/v4/spreadsheets/${env("GOOGLE_
 
 // All data rows of the `Games` tab (the header row is skipped), in one call.
 export async function readGameRows(): Promise<string[][]> {
-  const res = await client().request<{ values?: string[][] }>({ url: `${base()}/values/Games!A2:N` });
+  const res = await client().request<{ values?: string[][] }>({ url: `${base()}/values/Games!A2:O` });
   return res.data.values ?? [];
 }
 
@@ -31,7 +31,7 @@ export async function readGameRows(): Promise<string[][]> {
 // as typed text, so dates and IDs aren't reformatted by Sheets.
 export async function appendGameRow(row: string[]): Promise<void> {
   await client().request({
-    url: `${base()}/values/Games!A:N:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,
+    url: `${base()}/values/Games!A:O:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,
     method: "POST",
     data: { values: [row] },
   });
@@ -74,7 +74,7 @@ export async function replaceGameRows(rows: Map<number, string[]>): Promise<void
     // Index 0 is the header row; Sheet row numbers start at 1.
     if (i === 0 || !row || seen.has(id)) return;
     seen.add(id);
-    data.push({ range: `Games!A${i + 1}:N${i + 1}`, values: [row] });
+    data.push({ range: `Games!A${i + 1}:O${i + 1}`, values: [row] });
   });
   if (data.length === 0) return;
   await client().request({

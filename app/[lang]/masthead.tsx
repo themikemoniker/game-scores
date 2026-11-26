@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Locale } from "../../lib/i18n";
+import { dictionary, type Locale } from "../../lib/i18n";
 import { Switcher } from "./switcher";
 
 // A drawn back arrow in the UI stroke weight, for links that return to the ranking.
@@ -20,6 +20,11 @@ export function Masthead({ lang, rest, children }: { lang: Locale; rest?: string
         {children ?? (
           <Link href={`/${lang}`} className="wordmark">
             Game Scores
+          </Link>
+        )}
+        {!rest?.startsWith("/quiz") && (
+          <Link href={`/${lang}/quiz`} className="quiz-link">
+            {dictionary(lang).quizLink}
           </Link>
         )}
         <Switcher lang={lang} rest={rest} />

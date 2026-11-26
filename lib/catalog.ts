@@ -21,7 +21,24 @@ export const COLUMNS = [
   "user_rating",
   "user_count",
   "last_synced",
+  "tags",
 ] as const;
+
+// The owner's Tags, in the order the Quiz offers them. Names live in the i18n dictionaries.
+export const TAGS = [
+  "roguelike",
+  "metroidvania",
+  "2d-platformer",
+  "3d-platformer",
+  "open-world",
+  "cozy",
+  "story-rich",
+  "deckbuilder",
+  "shooter",
+  "puzzle",
+] as const;
+export type Tag = (typeof TAGS)[number];
+export const isTag = (s: string): s is Tag => (TAGS as readonly string[]).includes(s);
 
 type RatingKind = keyof typeof WEIGHTS;
 export type Cells = Record<(typeof COLUMNS)[number], string>;
@@ -68,6 +85,7 @@ function parse(c: Cells) {
     developer: c.developer,
     description: c.description,
     lastSynced: c.last_synced || null,
+    tags: list(c.tags).filter(isTag),
     ...score(c),
   };
 }
@@ -120,6 +138,8 @@ export type InvalidRow = { row: number; reason: string };
 export function readCatalog(rows: string[][], query: CatalogQuery = {}) {
   const games: Game[] = [];
   const invalidRows: InvalidRow[] = [];
+  // Unknown Tags are dropped, not fatal: the Game stays visible and the owner sees the typo.
+  const unknownTags: InvalidRow[] = [];
   const slugs = new Set<string>();
   const ids = new Set<string>();
   rows.forEach((r, i) => {
@@ -132,6 +152,8 @@ export function readCatalog(rows: string[][], query: CatalogQuery = {}) {
     if (reason) return invalidRows.push({ row: i + 2, reason });
     slugs.add(c.slug);
     ids.add(c.igdb_id);
+    for (const tag of list(c.tags).filter((t) => !isTag(t)))
+      unknownTags.push({ row: i + 2, reason: `unknown Tag "${tag}" on ${c.name}, left out` });
     games.push(parse(c));
   });
   const search = query.search?.trim().toLowerCase();
@@ -142,5 +164,5 @@ export function readCatalog(rows: string[][], query: CatalogQuery = {}) {
       (!query.platform || g.platforms.includes(query.platform)) &&
       (!query.genre || g.genres.includes(query.genre)),
   );
-  return { games: visible.sort(byRank), invalidRows };
+  return { games: visible.sort(byRank), invalidRows, unknownTags };
 }

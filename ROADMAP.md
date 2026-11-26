@@ -2,10 +2,15 @@
 
 Ideas, not promises. When one is picked up it gets a ticket under `.scratch/<feature>/issues/`.
 
+## Shipped
+
+- **Quiz and Matches.** A short Quiz (where you play, which Tags you feel like, classic or
+  modern) that recommends 3 Games from the Catalog and says why each one matched. Built through
+  the usual process: grilled, specced (stories 49–57), tickets 09 Tags and 10 Quiz and Matches.
+- **A real Catalog.** 16 hand-picked Games; the test rows are gone.
+
 ## Now: ready to share
 
-- **Clean Catalog.** Remove the `test-*` rows from the Sheet and import 15–30 real Games, so the
-  ranking shows the Score working across the heat scale.
 - **Link previews.** Open Graph image per page with `next/og` (built in): the Game's cover, name
   and Score circle. Shared links currently unfurl as plain text.
 - **Favicon.** `app/icon.svg`, the Score circle.
@@ -19,7 +24,7 @@ Ideas, not promises. When one is picked up it gets a ticket under `.scratch/<fea
   follows IGDB without visiting `/admin`.
 - **Analytics.** Vercel Web Analytics and Speed Insights (free on Hobby) to see which Games
   people open.
-- **Ranking screenshot in the README** once the Catalog is real.
+- **Tag filter on the ranking**, once Tags exist.
 
 ## Later
 

@@ -4,7 +4,7 @@ A hand-picked Catalog of Games, ranked by the site's own Score, in English and S
 
 **Live:** https://game-scores-rho.vercel.app
 
-![A Game page: Hades, Score 87, with its facts and the start of the Score Breakdown](docs/screenshot.png)
+![The ranking: Breath of the Wild 91, Hades 87, Hollow Knight 85, each with its critic and user ratings pulled toward 70](docs/screenshot-ranking.png)
 
 Aggregators show a number; this site shows the working. Each External Rating from IGDB is pulled
 toward a baseline of 70, more strongly the fewer reviews it rests on, and the adjusted critic and
@@ -13,7 +13,14 @@ values and each one's share. The formula lives in `lib/catalog.ts`.
 
 Built with Next.js (App Router), TypeScript and plain CSS. A Google Sheet is the database
 (`docs/adr/0001`). See `GLOSSARY.md` for vocabulary, `.scratch/game-scores/spec.md` for the spec
-and [`ROADMAP.md`](ROADMAP.md) for what's next.
+[`ROADMAP.md`](ROADMAP.md) for what's next, and
+[`docs/how-i-built-this.md`](docs/how-i-built-this.md) for the process, in English and Spanish.
+
+## Screens
+
+| Game page and Score Breakdown | Quiz and Matches |
+| --- | --- |
+| ![Hades: Score 87, facts and the start of the Score Breakdown](docs/screenshot.png) | ![The Quiz: PC, roguelike and metroidvania picked, with Dead Cells, Hades and Hollow Knight as Matches](docs/screenshot-quiz.png) |
 
 ## Run
 

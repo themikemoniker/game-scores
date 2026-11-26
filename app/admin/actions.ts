@@ -29,6 +29,7 @@ export async function removeGame(formData: FormData) {
 const ID = COLUMNS.indexOf("igdb_id");
 const SLUG = COLUMNS.indexOf("slug");
 const NAME = COLUMNS.indexOf("name");
+const TAGS_COL = COLUMNS.indexOf("tags");
 
 // Imports one Game from IGDB. A taken or invalid slug sends the owner back to pick another one.
 export async function importGame(formData: FormData) {
@@ -62,7 +63,7 @@ export async function importGame(formData: FormData) {
 }
 
 // Syncs one Game (form field igdbId) or, without one, every row in the Sheet. Overwrites every
-// Source column and last_synced, keeps the slug. IDs IGDB no longer returns are left as they are
+// Source column and last_synced, keeps the slug and the Tags. IDs IGDB no longer returns are left as they are
 // and reported back to the admin page.
 export async function syncGames(formData: FormData) {
   await requireAdmin();
@@ -71,12 +72,16 @@ export async function syncGames(formData: FormData) {
   const rows = await readGameRows();
   // Reversed so a duplicated IGDB ID keeps the first row's slug, the row replaceGameRows writes.
   const slugs = new Map(rows.map((r) => [Number(r[ID]?.trim()), r[SLUG]?.trim() ?? ""] as const).reverse());
+  const tags = new Map(rows.map((r) => [Number(r[ID]?.trim()), r[TAGS_COL] ?? ""] as const).reverse());
   const ids = (one ? [Number(one)] : [...slugs.keys()]).filter(
     (id) => Number.isInteger(id) && id > 0 && slugs.has(id),
   );
 
   const fetched = await fetchGameRows(ids);
-  for (const [id, row] of fetched) row[SLUG] = slugs.get(id) || row[SLUG];
+  for (const [id, row] of fetched) {
+    row[SLUG] = slugs.get(id) || row[SLUG];
+    row[TAGS_COL] = tags.get(id) ?? "";
+  }
   await replaceGameRows(fetched);
   updateTag(CATALOG_TAG);
 

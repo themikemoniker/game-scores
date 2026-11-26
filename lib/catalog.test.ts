@@ -18,6 +18,7 @@ function row(fields: Partial<Record<string, string>> = {}): string[] {
     user_rating: "",
     user_count: "",
     last_synced: "",
+    tags: "",
     ...fields,
   };
   return Object.values(r) as string[];
@@ -178,6 +179,26 @@ describe("readCatalog", () => {
     const { games, invalidRows } = readCatalog([row(fields)]);
     expect(games).toEqual([]);
     expect(invalidRows).toEqual([{ row: 2, reason }]);
+  });
+
+  describe("Tags", () => {
+    it("reads the owner's Tags in the order they were written", () => {
+      const { games, unknownTags } = readCatalog([row({ tags: "metroidvania, roguelike" })]);
+      expect(games[0].tags).toEqual(["metroidvania", "roguelike"]);
+      expect(unknownTags).toEqual([]);
+    });
+
+    it("drops an unknown Tag and reports it, but keeps the Game visible", () => {
+      const { games, invalidRows, unknownTags } = readCatalog([row({ tags: "cozy, rogelike" })]);
+      expect(games[0].tags).toEqual(["cozy"]);
+      expect(invalidRows).toEqual([]);
+      expect(unknownTags).toEqual([{ row: 2, reason: 'unknown Tag "rogelike" on Game, left out' }]);
+    });
+
+    it("reads a row without the tags column as a Game with no Tags", () => {
+      const { games } = readCatalog([row().slice(0, 14)]);
+      expect(games[0].tags).toEqual([]);
+    });
   });
 
   describe("search and filters", () => {

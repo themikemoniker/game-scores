@@ -90,6 +90,21 @@ A public, read-only website that lists a hand-picked Catalog of Games, ranks the
 47. As the site owner, I want the Score constants (baseline, confidence weights, blend) in one place, so that I can tune the formula easily.
 48. As the site owner, I want a change to the Score constants to update every Score at once without a Sync, so that I can experiment with the formula freely.
 
+### Visitor: Quiz
+
+49. As a visitor, I want a short Quiz (where I play, which Tags I feel like, classic or modern), so that I find my next Game without knowing the Catalog.
+50. As a visitor, I want the top 3 Matches, each with a "Why this match" line naming the Platform family, the shared Tags and the year, so that I can see why the site picked it.
+51. As a visitor, I want my Quiz answers in the URL, so that I can share my results or come back to them.
+52. As a visitor, I want an honest message when nothing matches, with the top-scored Games on my Platforms instead, so that I'm never left with an empty page.
+53. As a visitor, I want the Quiz and Tag names in English and Spanish, so that it reads naturally in my language.
+54. As a visitor, I want a Game's Tags on its Game page, so that I understand a Match when I click through.
+
+### Site owner: Tags
+
+55. As the site owner, I want to give each Game 2–4 Tags from a fixed list in the Sheet, so that the Quiz matches on how a Game plays rather than on the Source's broad Genres.
+56. As the site owner, I want Sync to keep a Game's Tags, so that my Tags are never overwritten.
+57. As the site owner, I want the admin page to list Games with no Tags and any unknown Tag with its row number, so that I can fix them in the Sheet.
+
 ## Implementation Decisions
 
 ### Architecture
@@ -139,6 +154,15 @@ The Score is never stored in the Sheet.
 - **Sync** (one Game, or all of them) refetches from the Source, overwrites every Source column, keeps the slug and sets last synced. If an IGDB ID no longer returns data, the row is left as it is and the admin page reports it.
 - **Remove** deletes the row. Nothing else references a Game.
 
+### Tags and the Quiz
+
+- **Tags** are a fixed list in code, each with an English and Spanish name: roguelike, metroidvania, 2D platformer, 3D platformer, open world, cozy, story-rich, deckbuilder, shooter, puzzle. Adding one is one line plus its Spanish name.
+- The Sheet gets a `tags` column after `last_synced`: comma-separated Tag keys. Import leaves it empty; Sync and Sync all keep it, like the slug. An unknown Tag is dropped and reported as an invalid-row note; the Game stays visible.
+- **Platform families**, a fixed map in code from Source Platform names: PC (Windows, Mac, Linux), PlayStation (PS1–PS5, PSP, Vita), Xbox (all), Nintendo (NES to Switch 2), Mobile (iOS, Android). Unmapped Platforms belong to no family.
+- **Quiz**: Platform families (any number; none means all), up to 3 Tags (none shows a prompt, no results), era Classic (before 2010), Modern (2010 and later) or Either. Answers live in the URL of `/[lang]/quiz`; the page is a plain form rendered on the server. Unknown values are ignored; only the first 3 Tags count.
+- **Matching**: Platform family and era are hard filters. A Match shares at least one Tag. Matches order by shared Tags, then Score (Unscored last), then name. The top 3 are shown with "Why this match". With no Match, the page says so and shows the top 3 scored Games on the chosen Platforms.
+- Matching is a pure function next to Catalog read, tested through it with Vitest the same way.
+
 ### Delivery order
 
 Each slice is deployed working:
@@ -149,6 +173,8 @@ Each slice is deployed working:
 4. Search and filters in the URL.
 5. Spanish: locale prefixes, browser detection, the switcher, Genre translations and the "(in English)" label.
 6. Visual redesign: a bolder, more current visual world for every page, chosen from a direction round (see issue 08). Visual only: data, URLs, i18n meaning and the Score formula don't change.
+7. Tags: the Sheet column, validation, Game page chips, the admin list, and Tags for every Game (issue 09).
+8. Quiz and Matches: the matching function, `/[lang]/quiz`, the masthead link, EN/ES and a polish pass (issue 10).
 
 ## Testing Decisions
 
@@ -174,7 +200,8 @@ Each slice is deployed working:
 - Machine translation of descriptions, or Spanish descriptions written by hand.
 - Override columns that protect hand edits from Sync.
 - Scheduled or automatic Sync.
-- Side-by-side comparisons, "similar games" and rankings by year.
+- Side-by-side comparisons, "similar games" and rankings by year. (The Quiz recommends from answers, not from a Game.)
+- A Tag filter on the ranking (on the roadmap).
 - Price, screenshots, trailers and game length.
 - Score history, or keeping old Scores when the formula changes.
 - A real database (see ADR 0001 for the path if it's ever needed).
