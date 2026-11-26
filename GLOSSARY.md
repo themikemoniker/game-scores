@@ -32,6 +32,24 @@ _Avoid_: Add, create
 Replacing a Game's stored information and External Ratings with the latest from its Source. Each Game records when it was last synced.
 _Avoid_: Refresh, update, import (import is adding a new Game to the Catalog)
 
+**Tag**:
+An owner-written label of how a Game plays (roguelike, cozy…), from a fixed list. Unlike Genres, Tags come from the site owner, not the Source.
+_Avoid_: Label, keyword, vibe
+
+**Platform family**:
+A group of related Platforms (PC, PlayStation, Xbox, Nintendo, Mobile) used by the Quiz.
+_Avoid_: Ecosystem, brand
+
+## Recommending
+
+**Quiz**:
+A visitor's answers about where they play, which Tags they feel like and classic or modern.
+_Avoid_: Survey, form, questionnaire
+
+**Match**:
+A Game that fits a Quiz, shown with why it matched.
+_Avoid_: Recommendation (fine in prose, not in the UI), suggestion, result
+
 ## Scoring
 
 **External Rating**:
