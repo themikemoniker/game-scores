@@ -12,7 +12,7 @@ See `.scratch/game-scores/spec.md`: user story 61, and Daily Sync.
 - [x] `GET /api/cron/sync` answers 401 without the right `Authorization: Bearer $CRON_SECRET` (or when `CRON_SECRET` isn't set), and otherwise runs Sync all, revalidates the Catalog and returns `{ synced, missing }`.
 - [x] `vercel.json` schedules it at `0 6 * * *`; `proxy.ts` no longer redirects `/api/`.
 - [x] README: the `CRON_SECRET` variable and what the daily Sync means for hand edits.
-- [ ] `CRON_SECRET` is set in the Vercel production environment.
+- [x] `CRON_SECRET` is set in the Vercel production environment (a generated 32-byte hex value, marked sensitive).
 - [ ] After deploy, the job shows in the Vercel project's Cron Jobs tab, and its first run returns 200.
 - [x] `npm run typecheck`, `npm test` and `npm run build` pass.
 
