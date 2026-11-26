@@ -10,7 +10,12 @@ export const generateStaticParams = () => LOCALES.map((lang) => ({ lang }));
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
-  return { title: "Game Scores", description: hasLocale(lang) ? dictionary(lang).siteDescription : undefined };
+  return {
+    title: "Game Scores",
+    description: hasLocale(lang) ? dictionary(lang).siteDescription : undefined,
+    // The preview images are 1200×630, so X shows them full width.
+    twitter: { card: "summary_large_image" },
+  };
 }
 
 export default async function RootLayout({ children, params }: Props & { children: React.ReactNode }) {

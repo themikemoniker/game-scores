@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCatalog } from "../../../../lib/catalog-cache";
@@ -8,7 +9,23 @@ import { ScoreStamp, scoreStep } from "../../score-meter";
 
 export const revalidate = 600;
 
-export default async function GamePage({ params }: { params: Promise<{ lang: string; slug: string }> }) {
+type Props = { params: Promise<{ lang: string; slug: string }> };
+
+// The title and description a shared link unfurls with; the image is opengraph-image.tsx next to this page.
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang, slug } = await params;
+  if (!hasLocale(lang)) return {};
+  const {
+    games: [game],
+  } = await getCatalog({ slug });
+  if (!game) return {};
+  const title = `${game.name} · Game Scores`;
+  const description =
+    game.description.length > 160 ? `${game.description.slice(0, 159).trimEnd()}…` : game.description;
+  return { title, description, openGraph: { title, description } };
+}
+
+export default async function GamePage({ params }: Props) {
   const { lang, slug } = await params;
   if (!hasLocale(lang)) notFound();
   const {
