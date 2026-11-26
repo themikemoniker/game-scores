@@ -1,7 +1,17 @@
 # Game Scores
 
-A hand-picked Catalog of Games, ranked by the site's own Score. See `GLOSSARY.md` for vocabulary,
-`.scratch/game-scores/spec.md` for the spec and `docs/adr/` for decisions.
+A hand-picked Catalog of Games, ranked by the site's own Score, in English and Spanish.
+
+![A Game page: Hades, Score 87, with its facts and the start of the Score Breakdown](docs/screenshot.png)
+
+Aggregators show a number; this site shows the working. Each External Rating from IGDB is pulled
+toward a baseline of 70, more strongly the fewer reviews it rests on, and the adjusted critic and
+user ratings are blended 50/50. Every Game page prints the raw ratings, review counts, adjusted
+values and each one's share. The formula lives in `lib/catalog.ts`.
+
+Built with Next.js (App Router), TypeScript and plain CSS. A Google Sheet is the database
+(`docs/adr/0001`). See `GLOSSARY.md` for vocabulary, `.scratch/game-scores/spec.md` for the spec
+and [`ROADMAP.md`](ROADMAP.md) for what's next.
 
 ## Run
 
@@ -55,4 +65,9 @@ The site reads the Sheet at most every 10 minutes (cache tag `catalog`), so hand
 
 ## Deploy
 
-Import the repo in Vercel (framework preset: Next.js), add the six environment variables, deploy. The admin page is at `/admin`.
+Vercel's free Hobby plan. Import the repo in Vercel (framework preset: Next.js, production branch
+`main`), add the six environment variables, deploy. Every push to `main` deploys; other branches
+get preview URLs. The admin page is at `/admin`.
+
+GitHub Pages can't host this: it serves static files only, and the site needs a server for the
+Sheet credentials, IGDB, the admin actions and the locale redirect.
