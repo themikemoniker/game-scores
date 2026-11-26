@@ -71,6 +71,13 @@ export default async function GamePage({ params }: { params: Promise<{ lang: str
                 <dd>{game.genres.map((g) => genreName(lang, g)).join(", ") || t.noGenres}</dd>
               </div>
             </dl>
+            {game.tags.length > 0 && (
+              <ul className="tags" aria-label={t.tagsLabel}>
+                {game.tags.map((tag) => (
+                  <li key={tag}>{t.tagNames[tag]}</li>
+                ))}
+              </ul>
+            )}
             {game.description && (
               <p className="description">
                 {t.inEnglish && <span className="note">{t.inEnglish} </span>}
