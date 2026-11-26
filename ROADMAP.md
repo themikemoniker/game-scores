@@ -4,6 +4,8 @@ Ideas, not promises. When one is picked up it gets a ticket under `.scratch/<fea
 
 ## Shipped
 
+- **Link previews.** Each Game page unfurls with its cover, name and Score stamp; the ranking
+  and the Quiz with the wordmark and the site description, in English or Spanish (ticket 12).
 - **CI.** A GitHub Action runs `npm run typecheck`, `npm test` and `npm run build` on every PR
   and every push to `main` (ticket 11).
 - **Quiz and Matches.** A short Quiz (where you play, which Tags you feel like, classic or
@@ -13,8 +15,6 @@ Ideas, not promises. When one is picked up it gets a ticket under `.scratch/<fea
 
 ## Now: ready to share
 
-- **Link previews.** Open Graph image per page with `next/og` (built in): the Game's cover, name
-  and Score circle. Shared links currently unfurl as plain text.
 - **Favicon.** `app/icon.svg`, the Score circle.
 - **Search engines.** `app/sitemap.ts` and `app/robots.ts`, plus `hreflang` alternates between
   `/en` and `/es`.
