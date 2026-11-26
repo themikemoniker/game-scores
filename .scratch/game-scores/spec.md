@@ -109,6 +109,11 @@ A public, read-only website that lists a hand-picked Catalog of Games, ranks the
 
 58. As a contributor, I want every pull request type-checked, tested and built, so that a broken change shows up before it merges.
 
+### Visitor: link previews
+
+59. As a visitor sharing a Game page, I want the link to unfurl with the Game's cover, name and Score, so that people see what I'm recommending before they click.
+60. As a visitor sharing the ranking or the Quiz, I want the link to unfurl with the site's name and what it is, in my language, so that the link doesn't look like plain text.
+
 ## Implementation Decisions
 
 ### Architecture
@@ -171,6 +176,13 @@ The Score is never stored in the Sheet.
 
 - A GitHub Action runs `npm ci`, `npm run typecheck`, `npm test` and `npm run build` on every pull request and on every push to `main`. It needs no secrets, because every route is rendered on demand and the build never reads the Sheet or calls IGDB.
 
+### Link previews
+
+- Open Graph images through Next's `opengraph-image.tsx` file convention, rendered on request with `next/og`: one for each Game page and one for the ranking and the Quiz, in each locale. They are 1200×630, and the layout sets `twitter:card` to `summary_large_image`.
+- A Game's image shows its cover (IGDB's `t_cover_big_2x` size, or the initial placeholder), its name and its Score stamp on a paper plate, so every step of the heat scale reads against the yellow band. An Unscored Game shows the dashed stamp and the word.
+- The display font is a Latin subset of Dela Gothic One committed in `assets/` with its OFL license, so rendering never fetches a font. The colors are the `globals.css` tokens as hex, because the renderer can't read CSS variables.
+- Game pages get their own title (`<name> · Game Scores`) and a description cut at about 160 characters.
+
 ### Delivery order
 
 Each slice is deployed working:
@@ -184,6 +196,7 @@ Each slice is deployed working:
 7. Tags: the Sheet column, validation, Game page chips, the admin list, and Tags for every Game (issue 09).
 8. Quiz and Matches: the matching function, `/[lang]/quiz`, the masthead link, EN/ES and a polish pass (issue 10).
 9. CI: typecheck, test and build on every pull request (issue 11).
+10. Link previews: an Open Graph image per Game page and one for the ranking and the Quiz (issue 12).
 
 ## Testing Decisions
 
