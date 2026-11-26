@@ -105,6 +105,10 @@ A public, read-only website that lists a hand-picked Catalog of Games, ranks the
 56. As the site owner, I want Sync to keep a Game's Tags, so that my Tags are never overwritten.
 57. As the site owner, I want the admin page to list Games with no Tags and any unknown Tag with its row number, so that I can fix them in the Sheet.
 
+### Contributor: CI
+
+58. As a contributor, I want every pull request type-checked, tested and built, so that a broken change shows up before it merges.
+
 ## Implementation Decisions
 
 ### Architecture
@@ -163,6 +167,10 @@ The Score is never stored in the Sheet.
 - **Matching**: Platform family and era are hard filters. A Match shares at least one Tag. Matches order by shared Tags, then Score (Unscored last), then name. The top 3 are shown with "Why this match". With no Match, the page says so and shows the top 3 scored Games on the chosen Platforms.
 - Matching is a pure function next to Catalog read, tested through it with Vitest the same way.
 
+### CI
+
+- A GitHub Action runs `npm ci`, `npm run typecheck`, `npm test` and `npm run build` on every pull request and on every push to `main`. It needs no secrets, because every route is rendered on demand and the build never reads the Sheet or calls IGDB.
+
 ### Delivery order
 
 Each slice is deployed working:
@@ -175,6 +183,7 @@ Each slice is deployed working:
 6. Visual redesign: a bolder, more current visual world for every page, chosen from a direction round (see issue 08). Visual only: data, URLs, i18n meaning and the Score formula don't change.
 7. Tags: the Sheet column, validation, Game page chips, the admin list, and Tags for every Game (issue 09).
 8. Quiz and Matches: the matching function, `/[lang]/quiz`, the masthead link, EN/ES and a polish pass (issue 10).
+9. CI: typecheck, test and build on every pull request (issue 11).
 
 ## Testing Decisions
 

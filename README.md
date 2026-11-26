@@ -32,6 +32,8 @@ npm run typecheck
 npm run build
 ```
 
+CI runs the last three on every pull request and every push to `main` (`.github/workflows/ci.yml`).
+
 Check the Sheet connection (prints tabs, header and Game names, no secrets):
 
 ```sh
