@@ -114,6 +114,10 @@ A public, read-only website that lists a hand-picked Catalog of Games, ranks the
 59. As a visitor sharing a Game page, I want the link to unfurl with the Game's cover, name and Score, so that people see what I'm recommending before they click.
 60. As a visitor sharing the ranking or the Quiz, I want the link to unfurl with the site's name and what it is, in my language, so that the link doesn't look like plain text.
 
+### Site owner: daily Sync
+
+61. As the site owner, I want every Game synced from the Source once a day, so that the Score follows IGDB without me opening the admin page.
+
 ## Implementation Decisions
 
 ### Architecture
@@ -183,6 +187,13 @@ The Score is never stored in the Sheet.
 - The display font is a Latin subset of Dela Gothic One committed in `assets/` with its OFL license, so rendering never fetches a font. The colors are the `globals.css` tokens as hex, because the renderer can't read CSS variables.
 - Game pages get their own title (`<name> · Game Scores`) and a description cut at about 160 characters.
 
+### Daily Sync
+
+- A Vercel Cron (`vercel.json`) calls `GET /api/cron/sync` once a day at 06:00 UTC (Hobby runs it somewhere within that hour, on production only). The route answers 401 unless the `Authorization` header is `Bearer` plus the `CRON_SECRET` environment variable, then runs Sync all, revalidates the Catalog cache and returns `{ synced, missing }`. A failure is a 500 in Vercel's cron log; there's no alert.
+- Sync all lives in one function (`lib/sync.ts`) shared by the admin action and the cron route, so both keep the slug and the Tags the same way.
+- Accepted trade-off: Sync overwrites every Source column, so a hand edit to one of them in the Sheet now lasts until the next morning. Override columns that protect hand edits stay on the roadmap.
+- The locale redirect (`proxy.ts`) skips `/api/`.
+
 ### Delivery order
 
 Each slice is deployed working:
@@ -197,6 +208,7 @@ Each slice is deployed working:
 8. Quiz and Matches: the matching function, `/[lang]/quiz`, the masthead link, EN/ES and a polish pass (issue 10).
 9. CI: typecheck, test and build on every pull request (issue 11).
 10. Link previews: an Open Graph image per Game page and one for the ranking and the Quiz (issue 12).
+11. Daily Sync: a Vercel Cron that runs Sync all every morning (issue 13).
 
 ## Testing Decisions
 
@@ -221,7 +233,7 @@ Each slice is deployed working:
 - Translating the admin page.
 - Machine translation of descriptions, or Spanish descriptions written by hand.
 - Override columns that protect hand edits from Sync.
-- Scheduled or automatic Sync.
+- An alert when the daily Sync fails (Vercel's cron log shows it).
 - Side-by-side comparisons, "similar games" and rankings by year. (The Quiz recommends from answers, not from a Game.)
 - A Tag filter on the ranking (on the roadmap).
 - Price, screenshots, trailers and game length.
