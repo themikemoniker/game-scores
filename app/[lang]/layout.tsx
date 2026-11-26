@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { dictionary, hasLocale, LOCALES } from "../../lib/i18n";
+import { fontVariables } from "../fonts";
 import "../globals.css";
 
 type Props = { params: Promise<{ lang: string }> };
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function RootLayout({ children, params }: Props & { children: React.ReactNode }) {
   const { lang } = await params;
   return (
-    <html lang={lang}>
+    <html lang={lang} className={fontVariables}>
       <body>{children}</body>
     </html>
   );

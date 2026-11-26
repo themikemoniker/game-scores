@@ -46,6 +46,12 @@ A public, read-only website that lists a hand-picked Catalog of Games, ranks the
 24. As a Spanish-speaking visitor, I want English-only descriptions labelled "(in English)", so that I know why that text isn't translated.
 25. As a Spanish-speaking visitor, I want the Score Breakdown explained in Spanish, so that I understand the Score as well as an English reader.
 
+### Visitor: look and feel
+
+26. As a visitor, I want the site to feel current and fun, like something made by and for people who play games, so that it's memorable rather than a plain list.
+27. As a visitor, I want each Game to have a strong visual identity built from its cover and Score, so that I can tell Games apart at a glance and the ranking is enjoyable to scroll.
+28. As a visitor, I want numbers in the Score Breakdown never to overlap or overflow, at any width and for any pair of ratings, so that I can always read the working.
+
 ### Site owner: access
 
 26. As the site owner, I want to log in to the admin page with one password, so that only I can change the Catalog.
@@ -142,6 +148,7 @@ Each slice is deployed working:
 3. Sync, for one Game and for all, with last synced.
 4. Search and filters in the URL.
 5. Spanish: locale prefixes, browser detection, the switcher, Genre translations and the "(in English)" label.
+6. Visual redesign: a bolder, more current visual world for every page, chosen from a direction round (see issue 08). Visual only: data, URLs, i18n meaning and the Score formula don't change.
 
 ## Testing Decisions
 
