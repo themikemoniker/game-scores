@@ -10,5 +10,5 @@ export function proxy(request: NextRequest) {
   return NextResponse.redirect(url);
 }
 
-// Skips Next's own files, the admin page (no locale prefix) and anything with a file extension.
-export const config = { matcher: ["/((?!_next/|admin(?:/|$)|.*\\.).*)"] };
+// Skips Next's own files, the admin page (no locale prefix), API routes and anything with a file extension.
+export const config = { matcher: ["/((?!_next/|admin(?:/|$)|api/|.*\\.).*)"] };
