@@ -4,6 +4,8 @@ Ideas, not promises. When one is picked up it gets a ticket under `.scratch/<fea
 
 ## Shipped
 
+- **Favicon.** `app/icon.svg`, the Score circle on the yellow band. Fonts are no longer
+  preloaded, which took a cold load from ~240 font files down to the slices a page uses.
 - **Fresh ratings.** A Vercel Cron runs Sync all every morning, so the Score follows IGDB
   without visiting `/admin` (ticket 13).
 - **Link previews.** Each Game page unfurls with its cover, name and Score stamp; the ranking
@@ -17,7 +19,6 @@ Ideas, not promises. When one is picked up it gets a ticket under `.scratch/<fea
 
 ## Now: ready to share
 
-- **Favicon.** `app/icon.svg`, the Score circle.
 - **Search engines.** `app/sitemap.ts` and `app/robots.ts`, plus `hreflang` alternates between
   `/en` and `/es`.
 
